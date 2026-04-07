@@ -11,93 +11,151 @@
   nav { background: rgba(5,8,10,0.95); border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
   .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--text); text-decoration: none; font-size: 20px; }
   .container { max-width: 960px; margin: 60px auto; padding: 0 24px; }
-  h1 { font-size: clamp(28px, 5vw, 40px); color: var(--brand); margin-bottom: 10px; text-align: center; font-weight: 800; }
-  .subtitle { text-align: center; color: var(--text2); margin-bottom: 50px; font-size: 16px; }
-  .post-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 40px; margin-bottom: 40px; transition: transform 0.2s; }
-  .post-card:hover { transform: translateY(-5px); border-color: var(--brand); }
-  .post-card h2 { color: #fff; font-size: 24px; margin-top: 0; margin-bottom: 20px; line-height: 1.4; }
-  .post-card p { color: var(--text2); font-size: 15.5px; margin-bottom: 20px; text-align: justify; }
+  h1 { font-size: clamp(28px, 5vw, 44px); color: var(--brand); margin-bottom: 10px; text-align: center; font-weight: 800; letter-spacing: -1px; }
+  .subtitle { text-align: center; color: var(--text2); margin-bottom: 60px; font-size: 16px; }
+  .post-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 24px; padding: 48px; margin-bottom: 50px; transition: all 0.3s ease; }
+  .post-card:hover { transform: translateY(-8px); border-color: var(--brand); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .post-card h2 { color: #fff; font-size: 26px; margin-top: 0; margin-bottom: 24px; line-height: 1.4; font-weight: 700; }
+  .post-card p { color: var(--text2); font-size: 16px; margin-bottom: 24px; text-align: justify; }
   .post-card strong { color: var(--brand); font-weight: 700; }
-  .tag { background: rgba(27,181,184,0.15); color: var(--brand); padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; margin-bottom: 15px; display: inline-block; }
-  .back-btn { color: var(--brand); text-decoration: none; font-weight: bold; border: 1px solid var(--brand); padding: 8px 16px; border-radius: 8px; transition: all 0.3s; }
-  .back-btn:hover { background: var(--brand); color: #fff; }
-  hr { border: 0; border-top: 1px solid var(--border); margin: 25px 0; }
+  .tag { background: rgba(27,181,184,0.15); color: var(--brand); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; margin-bottom: 20px; display: inline-block; }
+  
+  /* 내부 링크 스타일 */
+  .link-box { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed var(--border); }
+  .link-box span { font-size: 13px; color: var(--text2); }
+  .link-box a { color: var(--brand); text-decoration: none; font-weight: 700; font-size: 14px; border-bottom: 1px solid var(--brand); }
+  
+  .back-btn { background: var(--brand); color: #fff; text-decoration: none; font-weight: 800; padding: 10px 20px; border-radius: 10px; font-size: 14px; transition: all 0.2s; }
+  .back-btn:hover { background: #149194; transform: scale(1.05); }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 30px 0; }
+
+  footer { text-align: center; padding: 80px 24px; border-top: 1px solid var(--border); background: var(--bg2); margin-top: 100px; }
+  .f-btn { background: var(--brand); color: #fff; padding: 18px 48px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 18px; display: inline-block; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(27,181,184,0.3); }
 </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" class="logo">⏰ MeetAlarm Insight</a>
-    <a href="index.html" class="back-btn">← 홈으로</a>
+    <a href="index.html" class="logo">⏰ MeetAlarm <span style="color:var(--brand)">Insight</span></a>
+    <div style="display:flex; gap:20px; align-items:center;">
+      <a href="index.html" style="color:var(--text2); text-decoration:none; font-size:14px;">홈페이지</a>
+      <a href="https://meetplaner.github.io/meetalarm/" class="back-btn">앱 시작하기 →</a>
+    </div>
   </nav>
 
   <div class="container">
-    <h1>🚀 미팅 생산성 연구소</h1>
-    <p class="subtitle">효율적인 협업과 시간 관리를 위한 전문가들의 인사이트</p>
+    <h1>🚀 비즈니스 생산성 인사이트</h1>
+    <p class="subtitle">협업 도구의 혁신과 효율적인 스케줄 관리를 위한 전문가 가이드</p>
 
     <div class="post-card">
-      <span class="tag">업무 시스템</span>
-      <h2>01. 현대 직장인을 위한 화상회의 피로도(Zoom Fatigue) 극복 전략</h2>
-      <p>연속되는 화상회의는 뇌의 인지 부하를 급격히 높입니다. 이를 해결하기 위해서는 <strong>'회의 간 완충 시간(Buffer Time)'</strong> 확보가 필수적입니다. MeetAlarm과 같은 도구를 통해 미팅 종료 10분 전 알람을 설정하고, 다음 미팅까지 최소 5분의 휴식을 강제하는 시스템을 구축해야 합니다. 또한, 모든 회의에 아젠다를 미리 설정하여 불필요한 스크린 노출 시간을 20% 이상 단축하는 것이 신체적, 정신적 피로도를 줄이는 핵심입니다.</p>
+      <span class="tag">커뮤니케이션 전략</span>
+      <h2>01. 화상회의 피로도(Zoom Fatigue)의 과학적 원인과 해결책</h2>
+      <p>연속적인 화상회의는 단순한 피로를 넘어 뇌의 인지 시스템에 과부하를 줍니다. 화면 속 상대방의 미세한 표정 변화를 읽어내기 위해 뇌는 오프라인 미팅보다 훨씬 더 많은 에너지를 소비하기 때문입니다. 이를 방지하기 위해서는 <strong>'회의 사이의 완충 지대'</strong>가 반드시 필요합니다. 미팅 종료 전 미리 설정된 알림을 통해 강제로 논의를 마무리하고, 다음 미팅 전까지 최소 10분의 '디지털 디톡스' 시간을 가지는 시스템을 권장합니다.</p>
+      <div class="link-box">
+        <span>추천 기능: 3단계 지각 방지 스마트 알람</span>
+        <a href="index.html#g-alarm">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">팀 협업</span>
-      <h2>02. 비동기 소통의 핵심, 공유 캘린더와 데이터 투명성</h2>
-      <p>팀원이 언제 자리에 있는지 물어보는 시간만 모아도 하루 30분이 낭비됩니다. 실시간으로 업데이트되는 <strong>공유 캘린더 시스템</strong>은 "지금 회의 가능하세요?"라는 불필요한 질문을 삭제합니다. 팀 전체의 휴가 일정, 외근 일정, 집중 근무 시간을 투명하게 공개하면 팀원들은 서로의 흐름을 방해하지 않으면서도 가장 적절한 협업 타이밍을 스스로 찾아낼 수 있습니다. 이것이 진정한 자기완결적 조직의 모습입니다.</p>
+      <span class="tag">팀 워크플로우</span>
+      <h2>02. 비동기 협업 시대, 왜 공유 캘린더가 답인가?</h2>
+      <p>모든 팀원이 실시간으로 소통해야 한다는 강박은 오히려 생산성을 해칩니다. 진정한 협업은 서로의 집중 시간을 방해하지 않는 '비동기적 배려'에서 시작됩니다. 팀 전체의 휴가, 외근, 반차 일정이 시각화된 <strong>통합 대시보드</strong>를 사용하면, 누군가에게 메신저로 상태를 묻는 불필요한 인터럽트(Interrupt)를 획기적으로 줄일 수 있습니다. 데이터의 투명성이 확보될 때 팀의 자율성은 극대화됩니다.</p>
+      <div class="link-box">
+        <span>추천 기능: 팀 휴가 및 부재 일정 관리</span>
+        <a href="index.html#g-vacation">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">기술 연동</span>
-      <h2>03. SaaS 생태계의 통합: Slack, Zoom, 그리고 자동화된 워크플로우</h2>
-      <p>업무용 도구가 많아질수록 생산성이 높아진다는 것은 착각입니다. 도구 사이를 이동하는 '컨텍스트 스위칭' 비용이 발생하기 때문입니다. 성공적인 팀은 <strong>도구 간의 강력한 연동</strong>을 최우선으로 합니다. 미팅 일정이 확정되면 Slack 채널에 자동 공지되고, 미팅 시간이 되면 Zoom 링크가 팝업으로 떠야 합니다. 수동으로 링크를 복사하고 메신저를 뒤지는 행위는 이제 비효율의 상징입니다.</p>
+      <span class="tag">데이터 자산화</span>
+      <h2>03. 휘발되는 회의 기록을 강력한 기업 자산으로 만드는 법</h2>
+      <p>매일 수십 건씩 쏟아지는 회의 중 실제 액션 아이템으로 이어지는 것은 얼마나 될까요? 기록되지 않은 회의는 사실상 개최되지 않은 것과 같습니다. 회의 직후 <strong>아카이빙 시스템</strong>에 결정 사항을 즉시 기록하고 이를 멤버 전체가 공유하는 습관은 팀의 히스토리를 자산으로 바꿉니다. 6개월 뒤 신입 사원이 들어와도 과거의 아카이브를 통해 프로젝트의 맥락을 단숨에 파악할 수 있는 환경을 구축하십시오.</p>
+      <div class="link-box">
+        <span>추천 기능: 미팅 아카이브 보관함</span>
+        <a href="index.html#g-meeting">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
       <span class="tag">라이프 매니지먼트</span>
-      <h2>04. 일과 삶의 균형을 위한 '그룹 분리형' 일정 관리법</h2>
-      <p>공적인 업무와 사적인 삶이 섞이면 스트레스가 가중됩니다. 하지만 캘린더 앱을 여러 개 쓰는 것은 관리의 복잡성을 키웁니다. 하나의 플랫폼 내에서 <strong>'회사 그룹'과 '가족 그룹'을 철저히 분리</strong>하되, 원클릭으로 전환할 수 있는 구조가 필요합니다. 업무 시간에는 업무 일정에만 몰입하고, 퇴근 후에는 가족 이벤트 알람에만 집중할 수 있는 환경이 조성될 때 비로소 심리적 안정이 찾아옵니다.</p>
+      <h2>04. 일과 삶의 균형: 멀티 그룹 환경의 심리적 필요성</h2>
+      <p>업무용 캘린더에 가족의 병원 일정이나 친구와의 약속이 섞여 있는 것은 보안상으로나 심리적으로나 좋지 않습니다. 현대인은 <strong>'맥락의 분리'</strong>가 필요합니다. 업무용 그룹과 사생활용 그룹을 하나의 앱에서 완벽히 격리하여 운영하되, 원클릭으로 전환할 수 있는 유연한 도구를 선택해야 합니다. 회사 일과 가족 일정이 물리적으로 구분될 때 비로소 완전한 퇴근이 가능해집니다.</p>
+      <div class="link-box">
+        <span>추천 기능: 회사/가족/친구 멀티 그룹 전환</span>
+        <a href="index.html#g-multi">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">기록 자산화</span>
-      <h2>05. 회의록 아카이빙: 휘발되는 아이디어를 자산으로 바꾸는 법</h2>
-      <p>회의는 많이 하지만 결정된 사항이 실행되지 않는 이유는 기록의 부재 때문입니다. <strong>'아카이브(Archive)'</strong>는 단순히 오래된 문서를 보관하는 곳이 아니라, 팀의 집단 지성이 저장되는 데이터베이스입니다. 모든 미팅 종료 직후 핵심 결정 사항과 담당자를 기록하고 이를 영구 보존하면, 6개월 뒤에도 당시의 논의 배경을 즉시 복기할 수 있습니다. 기록되지 않은 회의는 개최되지 않은 것과 같습니다.</p>
+      <span class="tag">업무 자동화</span>
+      <h2>05. 정기 미팅 템플릿: 반복되는 행정 소요를 0으로 줄이기</h2>
+      <p>매주 월요일의 주간 보고, 매달 첫째 주 전체 회의... 이러한 정기 일정들을 매번 수동으로 등록하는 것은 명백한 낭비입니다. <strong>정기 미팅 템플릿 기능</strong>을 활용하여 한 번의 설정으로 일정을 자동 생성하십시오. 관리자는 오직 '변수'에만 집중하면 됩니다. 시스템이 알아서 일정을 생성하고 알람을 보내주는 환경은 관리자의 집중력을 보존해 주는 가장 큰 도구입니다.</p>
+      <div class="link-box">
+        <span>추천 기능: 정기 일정 자동 생성 템플릿</span>
+        <a href="index.html#g-recurring">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">시간 관리</span>
-      <h2>06. 딥워크(Deep Work) 시간 확보를 위한 스마트 알람 활용법</h2>
-      <p>전문가들은 고도의 집중력이 필요한 작업을 위해 최소 90분의 연속된 시간이 필요하다고 말합니다. 이 시간을 확보하기 위해 스마트 알람을 전략적으로 활용하세요. 미팅 시작 60분 전 알람은 현재 하던 일을 마무리하라는 신호입니다. 30분 전 알람은 미팅 준비를 시작하라는 신호입니다. 이렇게 <strong>단계별 알람 시스템</strong>을 갖추면 갑작스러운 일정 변화에 당황하지 않고 자신의 업무 리듬을 주도적으로 통제할 수 있습니다.</p>
+      <span class="tag">집중 근무</span>
+      <h2>06. 딥워크(Deep Work) 환경 구축을 위한 시간 차단 기술</h2>
+      <p>칼 뉴포트가 주창한 <strong>'딥워크'</strong>는 현대 비즈니스에서 차별화된 가치를 만드는 핵심 역량입니다. 딥워크를 위해서는 방해받지 않는 최소 90분의 시간이 확보되어야 합니다. MeetAlarm의 개인 일정 기능을 활용해 '집중 근무 시간'을 등록하고, 이 시간에는 미팅 요청이 오지 않도록 팀원들에게 시각적 신호를 주십시오. 알람 시스템을 10분 전으로 설정해두면 몰입의 마지막 순간까지 안전하게 시간을 확보할 수 있습니다.</p>
+      <div class="link-box">
+        <span>추천 기능: 오늘 내 일정 대시보드</span>
+        <a href="index.html#g-dash">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">조직 운영</span>
-      <h2>07. 신규 입사자의 빠른 적응을 돕는 '공유 히스토리' 구축</h2>
-      <p>신규 입사자가 조직에 적응하는 데 드는 비용은 생각보다 큽니다. 과거의 미팅 기록과 팀의 연간 스케줄을 자유롭게 열람할 수 있는 <strong>오픈 데이터 환경</strong>은 온보딩 기간을 획기적으로 줄여줍니다. "우리 팀은 그동안 어떤 고민을 해왔는가?"에 대한 답을 아카이브된 회의록에서 직접 찾게 하세요. 이는 수백 페이지의 매뉴얼보다 훨씬 강력한 교육 도구가 됩니다.</p>
+      <span class="tag">조직 문화</span>
+      <h2>07. MZ세대와 주재원 모두를 만족시키는 투명한 소통 방식</h2>
+      <p>최근의 조직 관리 트렌드는 '명확함'입니다. 업무 지시가 아닌 시스템에 의한 공유가 선호됩니다. 특히 해외 주재원처럼 시차가 존재하는 환경에서는 <strong>비동기 댓글 소통</strong>이 강력한 힘을 발휘합니다. 실시간 미팅이 어려운 상황에서도 일정 카드 하단에 남겨진 상세한 댓글과 공유 파일들은 정보의 격차를 없애고 소외되는 팀원이 없는 조직 문화를 만들어 줍니다.</p>
+      <div class="link-box">
+        <span>추천 기능: 일정별 상세 댓글 소통</span>
+        <a href="index.html#g-schedule">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">모임 최적화</span>
-      <h2>08. 동호회 및 스터디 그룹의 지속 가능성을 높이는 시스템</h2>
-      <p>사적 모임이 무너지는 가장 큰 이유는 '관리의 번거로움'입니다. 누군가 매번 장소를 공지하고 참석 인원을 체크해야 하는 수고를 시스템에 맡기세요. <strong>정기 미팅 템플릿</strong>을 사용하여 일정을 자동 생성하고, 댓글 기능을 통해 참석 여부를 투표 없이 확인하면 운영진의 피로도가 줄어듭니다. 시스템이 견고할수록 모임의 즐거움은 커집니다.</p>
+      <span class="tag">디지털 보안</span>
+      <h2>08. 초대코드 기반의 폐쇄형 협업 도구가 안전한 이유</h2>
+      <p>모든 사람에게 열려 있는 도구는 보안 사고의 타겟이 되기 쉽습니다. 특정 <strong>초대코드(Invitation Code)</strong>를 가진 인원만 진입할 수 있는 폐쇄적 구조는 가장 강력한 1차 방어선입니다. 이름과 비밀번호만으로 이루어진 익명성 기반의 소속 그룹 관리는 개인정보 유출을 원천적으로 차단하면서도 팀원들 간의 밀접한 소통을 보장합니다. 이는 현대 기업용 SaaS가 지향해야 할 보안 표준입니다.</p>
+      <div class="link-box">
+        <span>추천 가이드: 보안 및 데이터 정책</span>
+        <a href="index.html#faq-security">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">해외 협업</span>
-      <h2>09. 글로벌 비즈니스를 위한 시차 극복과 온라인 모임 가이드</h2>
-      <p>해외 지사나 주재원과의 협업에서 가장 큰 장애물은 시차입니다. 공유 캘린더에 현지 시간을 고려한 <strong>화상회의 링크(Zoom/Teams)</strong>를 미리 박아두는 것은 기본 매너입니다. MeetAlarm의 멀티 그룹 기능을 활용해 각 국가별 지사 그룹을 별도로 운영하면, 복잡한 메일 소통 없이도 전 세계 팀원들의 현재 상황을 실시간으로 파악하고 긴급 회의를 소집할 수 있습니다.</p>
+      <span class="tag">모임 운영</span>
+      <h2>09. 사적 모임과 동창회의 지속성을 결정짓는 '관리의 편의성'</h2>
+      <p>동호회나 가족 모임이 지속되지 못하는 이유는 총무나 관리자의 피로도 때문입니다. 일정을 등록하고, 참석자를 지정하고, 늦지 않게 알람을 보내는 행위를 사람이 직접 하면 지치게 됩니다. 시스템이 대신 <strong>지각 방지 알람</strong>을 보내주고 장소 정보를 공유하게 하십시오. 운영진이 편해질 때 모임은 본연의 목적인 '즐거움'에 집중할 수 있고, 자연스럽게 모임의 수명은 늘어납니다.</p>
+      <div class="link-box">
+        <span>추천 가이드: 가족 및 지인 모임 활용법</span>
+        <a href="index.html#g-family">자세히 보기 →</a>
+      </div>
     </div>
 
     <div class="post-card">
-      <span class="tag">보안 전략</span>
-      <h2>10. 익명 기반 협업 툴의 보안성과 폐쇄적 운영의 장점</h2>
-      <p>과도한 개인정보 수집은 사용자에게 거부감을 줍니다. 최근의 트렌드는 <strong>'이름과 초대코드' 기반의 폐쇄형 그룹웨어</strong>입니다. 불필요한 주민번호나 전화번호 노출 없이, 오직 해당 조직 내에서만 유효한 식별 정보를 사용함으로써 보안 사고의 위험을 최소화할 수 있습니다. 데이터의 소유권을 그룹 관리자가 확실히 제어할 수 있는 시스템이야말로 기업용 협업 도구의 필수 조건입니다.</p>
+      <span class="tag">연동 기술</span>
+      <h2>10. Zoom/Slack 연동이 가져오는 컨텍스트 스위칭 비용의 절감</h2>
+      <p>미팅을 위해 링크를 복사하고, 슬랙 창을 열어 다시 붙여넣는 행위는 뇌의 집중력을 갉아먹는 대표적인 작업입니다. <strong>원클릭 입장 버튼</strong>이 탑재된 일정 관리 도구는 이 사소한 동작들을 생략하게 해줍니다. 1초의 단축이 모여 수백 명 규모의 조직에서는 수십 시간의 생산성 향상으로 이어집니다. 도구는 사용자를 위해 일해야지, 사용자가 도구를 위해 일하게 해서는 안 됩니다.</p>
+      <div class="link-box">
+        <span>추천 가이드: 외부 툴 연동 방법</span>
+        <a href="index.html#faq-integration">자세히 보기 →</a>
+      </div>
     </div>
 
   </div>
 
-  <footer style="text-align:center; padding:40px; border-top:1px solid var(--border); color:var(--text3); font-size:12px;">
-    © 2026 MeetAlarm Insight Archive. 모든 아티클은 생산성 향상을 위해 작성되었습니다.
+  <footer>
+    <a href="https://meetplaner.github.io/meetalarm/" class="f-btn">지금 무료로 시작하기 →</a>
+    <p style="color:var(--text2); font-size:15px; margin-bottom:30px;">MeetAlarm은 전 세계 조직의 생산성 향상을 위해 끊임없이 연구합니다.</p>
+    <div style="color:var(--text3); font-size:12px;">
+      <a href="terms.html" style="color:var(--text3); margin-right:15px;">이용약관</a>
+      <a href="privacy.html" style="color:var(--text3);">개인정보처리방침</a>
+      <p style="margin-top:20px;">© 2026 MeetAlarm Insight Archive. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
