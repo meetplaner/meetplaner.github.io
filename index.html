@@ -123,8 +123,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 .modal-close{position:absolute;top:20px;right:20px;background:var(--bg4);border:none;color:var(--text);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:18px}
 .modal-title{font-size:20px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 .modal-text{font-size:13px;color:var(--text2);line-height:1.8;white-space:pre-wrap}
-.reveal{opacity:0;transform:translateY(24px);transition:all .55s ease}
-.reveal.visible{opacity:1;transform:none}
+.reveal { animation: fadeUp 0.8s ease-out forwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @media(max-width:900px){.two-col{flex-direction:column}.sidebar{position:static;width:100%;max-height:none}nav{padding:0 20px}.nav-status{display:none}footer{flex-direction:column;text-align:center}.hero-feats{gap:12px}.hf{min-width:150px}}
 </style>
 </head>
@@ -668,27 +668,46 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 </div>
 
 <script>
-// 사이드바 자동 활성화 스크립트
+// 1. 사이드바 메뉴 활성화 (스크롤 스파이) 버그 완벽 수정본
 const sections = document.querySelectorAll('.gsec');
 const navLinks = document.querySelectorAll('.snav a');
 
-window.addEventListener('scroll', () => {
+function updateNav() {
   let current = '';
+  // 상단 고정 네비게이션 바(64px)와 여백을 고려하여 오차 없이 정확한 타겟팅 (기준점: 100)
+  const scrollPos = window.scrollY + 100;
+
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    if (pageYOffset >= sectionTop - 150) {
+    // 기준점이 섹션의 상단 경계선을 지나는 순간 해당 섹션을 활성화
+    if (scrollPos >= sectionTop) {
       current = section.getAttribute('id');
     }
   });
+
+  // 문서 맨 아래에 닿았을 때는 무조건 마지막 항목 활성화 (내용이 짧은 섹션 강제 대응)
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+    if (sections.length > 0) {
+      current = sections[sections.length - 1].getAttribute('id');
+    }
+  }
+
+  // 메뉴 클래스 업데이트
   navLinks.forEach(link => {
     link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
+    if (current && link.getAttribute('href') === `#${current}`) {
       link.classList.add('active');
     }
   });
-});
+}
 
-// FAQ 아코디언 동작 스크립트
+// 스크롤 시 위치 갱신 및 페이지 로딩 직후 초기화
+window.addEventListener('scroll', updateNav);
+window.addEventListener('load', updateNav);
+updateNav();
+
+
+// 2. FAQ 아코디언 동작 스크립트
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     btn.classList.toggle('active');
@@ -696,16 +715,16 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-// 모달 동작 스크립트
+// 3. 약관 모달 동작 스크립트
 function openModal(id) { document.getElementById(id).classList.add('active'); }
 function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 window.onclick = e => { if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('active'); }
 
-// 스크롤 애니메이션 옵저버
+// 4. 스크롤 애니메이션 (페이드인) 옵저버
 const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// 서버 상태(핑) 체크 스크립트
+// 5. 서버 상태(핑) 체크 스크립트
 const BACKEND = 'https://meetalarm.onrender.com';
 async function checkServer() {
   const dot = document.getElementById('sdot'), txt = document.getElementById('stext');
