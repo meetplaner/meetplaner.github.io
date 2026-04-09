@@ -4,9 +4,9 @@
 <meta name="google-site-verification" content="OKTIKjU3vR-8w4v80JE4gq4qKiEwDH3dNlmtK79BsSo" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MeetAlarm - 스마트 미팅 관리 시스템 | 팀 일정·알람·회의록·그룹전환 완벽 가이드</title>
-<meta name="description" content="MeetAlarm 완벽 가이드. 3단계 미팅 알람, 회의록 아카이브, 멀티 그룹 전환(회사/가족/친구), 휴가 일정 충돌 방지, 참석자 전용 알람, Slack 연동, Zoom 링크 공유. 회사·모임·가족 일정을 하나의 앱으로 완벽 관리하세요.">
-<meta name="keywords" content="미팅 알람, 일정 관리, 회의록, 팀 캘린더, 모임 관리, 협업 툴, 스케줄러, 휴가관리, 그룹전환, 가족모임, 친구모임, B2B SaaS, 스터디 그룹, 회의 관리, 업무 캘린더">
+<title>MeetAlarm & eQMS Cloud | 팀 일정·알람부터 제약/바이오 품질 관리까지</title>
+<meta name="description" content="MeetAlarm 완벽 가이드 및 제약·바이오 특화 eQMS Cloud. 스마트 미팅 알람, 회의록 아카이브, 그룹 전환부터 FDA 21 CFR Part 11 규정을 준수한 일탈/CAPA 품질 관리 시스템까지 하나의 플랫폼에서 해결하세요.">
+<meta name="keywords" content="미팅 알람, 일정 관리, eQMS, 품질관리시스템, 제약바이오, 일탈관리, CAPA, Audit Trail, B2B SaaS, 스케줄러, 협업 툴">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4553938174786322" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -162,7 +162,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
     <div class="hf"><div class="hf-icon">🌐</div><div class="hf-t">멀티 그룹 전환</div><div class="hf-d">회사·가족·친구 원클릭 스위칭</div></div>
     <div class="hf"><div class="hf-icon">📝</div><div class="hf-t">회의록 아카이브</div><div class="hf-d">모든 모임 기록을 영구 보관</div></div>
     <div class="hf"><div class="hf-icon">🏖️</div><div class="hf-t">휴가 중복 방지</div><div class="hf-d">팀원 부재 일정을 캘린더로 한눈에</div></div>
-    <div class="hf"><div class="hf-icon">🔗</div><div class="hf-t">Slack · Zoom 연동</div><div class="hf-d">외부 툴과 끊김 없이 연결</div></div>
+    <div class="hf"><div class="hf-icon">☁️</div><div class="hf-t">SaaS 기반 eQMS</div><div class="hf-d">제약 특화 일탈·CAPA 생애주기 관리</div></div>
   </div>
 </section>
 
@@ -171,12 +171,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 
 <div class="sec-top" id="guide-start">
   <span class="s-eyebrow">// Feature Guide</span>
-  <h2>MeetAlarm 기능 완벽 가이드</h2>
+  <h2>MeetAlarm & eQMS 가이드</h2>
   <p>복잡한 설명 없이, 지금 당장 써먹을 수 있는 기능을 단계별로 안내합니다.</p>
 </div>
 <div class="two-col">
   <aside class="sidebar">
-    <h3>📖 기능 가이드</h3>
+    <h3>⏰ MeetAlarm 가이드</h3>
     <ul class="snav">
       <li><a href="#g-dash">✅ 대시보드 & 오늘 일정</a></li>
       <li><a href="#g-meeting">📝 미팅 & 회의록 아카이브</a></li>
@@ -187,6 +187,17 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
       <li><a href="#g-recurring">🔁 정기 일정 & 반복</a></li>
       <li><a href="#g-family">👨‍👩‍👧 가족·친구 활용법</a></li>
     </ul>
+
+    <h3 style="margin-top:24px; color:var(--brand); border-bottom:1px solid var(--border2); padding-bottom:10px;">🏢 eQMS Cloud 가이드</h3>
+    <ul class="snav">
+      <li><a href="#q-intro">💡 16년 현장 노하우의 결정체</a></li>
+      <li><a href="#q-saas">☁️ 멀티 테넌트 SaaS 환경</a></li>
+      <li><a href="#q-rbac">🔐 권한 통제 (RBAC)</a></li>
+      <li><a href="#q-audit">📜 오딧 트레일 (Audit Trail)</a></li>
+      <li><a href="#q-sla">⏱️ SLA 알람 & 에스컬레이션</a></li>
+      <li><a href="#q-capa">🔄 일탈-CAPA 생애주기</a></li>
+    </ul>
+
     <h3>💡 사용 팁</h3>
     <ul class="snav">
       <li><a href="#tip-daily">📅 일상 생산성 팁</a></li>
@@ -197,6 +208,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
       <li><a href="#tip-archive">🗄️ 아카이브 팁</a></li>
       <li><a href="#tip-trouble">🛠️ 문제 해결 팁</a></li>
     </ul>
+
     <h3>❓ FAQ</h3>
     <ul class="snav">
       <li><a href="#faq-basic">🚀 시작 & 기본 사용</a></li>
@@ -322,9 +334,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
       <div class="gcard">
         <h4>🔒 공개 범위 3단계 설정</h4>
         <div class="tgrid">
-          <div class="tcard"><div class="ti">🙋</div><div class="tt">개인 일정 <span class="badge bv">나만 보임</span></div><div class="td">병원 예약, 개인 면담, 프라이빗한 약속 등 다른 멤버에게 절대 노출되지 않는 완전한 개인 공간입니다.</div></div>
-          <div class="tcard"><div class="ti">👥</div><div class="tt">팀 공개 <span class="badge ba">부서원만</span></div><div class="td">특정 소그룹(부서)으로 지정된 인원에게만 보입니다. 가족 그룹 내 '부부만' 설정도 가능합니다.</div></div>
-          <div class="tcard"><div class="ti">🏢</div><div class="tt">전체 공개 <span class="badge bg">전원 열람</span></div><div class="td">창립기념일, 동창회 전체 MT, 동호회 정기 모임처럼 모든 멤버가 공유해야 하는 일정입니다.</div></div>
+          <div class="tcard"><div class="ti">🙋</div><div class="tt">개인 일정 <span class="badge bv">나만 보임</span></div><div class="td">병원 예약, 개인 면담 등 다른 멤버에게 절대 노출되지 않는 공간입니다.</div></div>
+          <div class="tcard"><div class="ti">👥</div><div class="tt">팀 공개 <span class="badge ba">부서원만</span></div><div class="td">특정 소그룹(부서)으로 지정된 인원에게만 보입니다.</div></div>
+          <div class="tcard"><div class="ti">🏢</div><div class="tt">전체 공개 <span class="badge bg">전원 열람</span></div><div class="td">모든 멤버가 공유해야 하는 일정입니다.</div></div>
         </div>
       </div>
       <div class="gcard">
@@ -596,6 +608,77 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
       </div>
     </div>
 
+    <div id="q-intro" class="gsec reveal" style="border-top:2px dashed var(--border3); margin-top:80px; margin-bottom:60px; padding-top:80px">
+      <div style="text-align:center; margin-bottom:40px">
+        <span class="s-eyebrow">// Enterprise Quality Management System</span>
+        <h2 style="font-family:'Syne',sans-serif; font-size:clamp(26px,4vw,40px); font-weight:800; margin-bottom:14px; letter-spacing:-1px; color:var(--brand)">제약·바이오 특화 eQMS Cloud</h2>
+        <p style="color:var(--text2); font-size:16px; max-width:680px; margin:0 auto; line-height:1.8">
+          단순한 IT 솔루션이 아닙니다. 16년간의 제약 생산 현장 총괄 및 베트남 신규 플랜트 셋업 과정에서 겪은 수많은 페이퍼워크와 실무의 한계를 극복하기 위해, 철저히 <b>'현장의 언어'</b>로 설계된 일탈(Deviation) 및 CAPA 관리 시스템입니다.
+        </p>
+      </div>
+    </div>
+
+    <div id="q-saas" class="gsec reveal">
+      <h2 class="gsec-title"><span>☁️</span>멀티 테넌트 SaaS 기반의 유연한 환경</h2>
+      <p class="gdesc">복잡한 자체 서버 구축이나 긴 도입 기간이 필요 없습니다. 가입 즉시 우리 회사만의 독립된 QMS 환경이 생성됩니다.</p>
+      <div class="gcard">
+        <h4>🏢 초대 코드로 1분 만에 시스템 세팅 완료</h4>
+        <p>새로운 회사를 생성하면 발급되는 고유 <strong>초대 코드(Invite Code)</strong>를 팀원들에게 공유하세요. 팀원들은 해당 코드로 가입하는 즉시 회사의 워크플로우에 합류하게 됩니다.</p>
+        <ul>
+          <li><strong>맞춤형 조직도:</strong> QA, QC, 제조, 생산관리, 공무 등 각 공장의 실제 부서명으로 설정 가능</li>
+          <li><strong>SLA 커스터마이징:</strong> Critical, Major, Minor, Incident 등급별 조사 기한(Inv Days)과 CAPA 기한(Days)을 회사 SOP에 맞춰 자유롭게 조정</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="q-rbac" class="gsec reveal">
+      <h2 class="gsec-title"><span>🔐</span>철저한 권한 기반 접근 통제 (RBAC)</h2>
+      <p class="gdesc">데이터 무결성을 위해 단순한 사용자/관리자 구분을 넘어, 제약 공장 실무 직책에 맞춘 세밀한 권한 제어를 제공합니다.</p>
+      <div class="gcard">
+        <div class="tgrid">
+          <div class="tcard"><div class="ti">👑</div><div class="tt">System Admin</div><div class="td">시스템 환경 설정, 등급 체계 변경, 계정 관리 등 전체 시스템을 통제합니다.</div></div>
+          <div class="tcard"><div class="ti">🛡️</div><div class="tt">QA 담당자</div><div class="td">일탈의 초기 등급을 평가(Eval)하고, 최종 조치 결과를 확인 후 승인(Approve)합니다.</div></div>
+          <div class="tcard"><div class="ti">🧑‍💼</div><div class="tt">부서장</div><div class="td">관할 부서에서 발생한 이슈에 대해 조사자(Investigator)를 배정하고 검토합니다.</div></div>
+          <div class="tcard"><div class="ti">👷</div><div class="tt">일반 팀원</div><div class="td">본인에게 배정된 원인 조사 및 CAPA(시정/예방 조치)를 시스템 내에서 수행합니다.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="q-audit" class="gsec reveal">
+      <h2 class="gsec-title"><span>📜</span>완벽한 오딧 트레일 (Audit Trail)</h2>
+      <p class="gdesc">FDA 21 CFR Part 11 및 GMP 데이터 완전성(Data Integrity) 규정을 준수하도록 시스템 근간에 Audit Log가 박혀있습니다.</p>
+      <div class="gcard">
+        <h4>추적 불가능한 수정은 없습니다</h4>
+        <p>누가, 언제, 어떤 IP로 접속하여 일탈 보고서의 어떤 내용(Old Value ➔ New Value)을 수정했는지 백그라운드에서 암호화되어 기록됩니다. 관리자를 포함한 그 누구도 이 로그를 임의로 삭제하거나 조작할 수 없어 규제 기관 실사(Inspection)에 완벽하게 대응합니다.</p>
+      </div>
+    </div>
+
+    <div id="q-sla" class="gsec reveal">
+      <h2 class="gsec-title"><span>⏱️</span>자동화된 기한 관리 & 에스컬레이션</h2>
+      <p class="gdesc">일탈 처리가 지연되어 메이저 지적사항이 되는 것을 시스템이 원천 차단합니다.</p>
+      <div class="gcard">
+        <h4>지능형 알람 및 시각화</h4>
+        <ul>
+          <li><strong>색상 기반 경고:</strong> 마감 기한 초과(Overdue) 항목은 대시보드에서 붉은색 경고로 눈에 띄게 표시됩니다.</li>
+          <li><strong>자동 에스컬레이션:</strong> 기한 임박 시 담당자 ➔ 부서장 ➔ QA 순으로 알림이 상향 보고되어 방치되는 이슈를 없앱니다.</li>
+          <li><strong>연장 관리:</strong> 합당한 사유가 있을 경우 시스템을 통해 정식으로 기한 연장(Extension Reason)을 요청하고 승인받는 프로세스를 탑재했습니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="q-capa" class="gsec reveal">
+      <h2 class="gsec-title"><span>🔄</span>일탈 ➔ 조사 ➔ CAPA 생애주기 관리</h2>
+      <p class="gdesc">이벤트 발생부터 최종 종결(Closed)까지의 전체 워크플로우를 하나로 묶었습니다.</p>
+      <div class="gcard">
+        <ol class="steps">
+          <li><strong>이벤트 등록:</strong> 현장 작업자가 이상 발생 즉시 초기 조치사항(Initial Action)을 시스템에 등록합니다.</li>
+          <li><strong>QA 평가 및 TF 구성:</strong> QA가 일탈 등급을 분류하고, 여러 부서가 얽힌 문제일 경우 관련 부서(Required Depts)를 포함한 TF를 구성합니다.</li>
+          <li><strong>원인 조사 (Investigation):</strong> 지정된 조사자가 근본 원인을 파악하여 시스템에 리포트합니다.</li>
+          <li><strong>CAPA 수립 및 실행:</strong> 재발 방지를 위한 시정 및 예방 조치(CAPA Plan)를 수립하고 담당자가 이를 수행합니다.</li>
+          <li><strong>최종 승인 (QA Closed):</strong> 모든 절차가 적합하게 완료되면 QA가 최종 승인하여 이슈를 종결합니다.</li>
+        </ol>
+      </div>
+    </div>
     <div style="border-top:2px solid var(--border);margin-bottom:60px;padding-top:60px">
       <div style="text-align:center;margin-bottom:40px">
         <span class="s-eyebrow">// F.A.Q</span>
@@ -653,7 +736,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
 
   </div> </div> 
 
-<!-- ══ CONTACT 섹션 ══ -->
 <div id="contact" style="position:relative;z-index:1;max-width:860px;margin:0 auto 80px;padding:0 24px;">
   <div style="background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:56px 48px;text-align:center;">
     <span style="font-family:var(--mono);font-size:11px;font-weight:500;color:var(--brand);letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:14px">// Contact</span>
@@ -693,7 +775,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:36
   <div class="fcopy">© 2026 MeetAlarm & eQMS. All rights reserved. &nbsp;|&nbsp; 문의: <a href="mailto:jeanjean7356@gmail.com" style="color:var(--text2);">jeanjean7356@gmail.com</a> &nbsp;|&nbsp; 본 서비스는 조직 및 개인의 스케줄 관리를 돕기 위해 개발된 소프트웨어입니다.</div>
 </footer>
 
-
 <script>
 // 1. 사이드바 메뉴 활성화 (절대 좌표 기반 완벽 수정본)
 const sections = document.querySelectorAll('.gsec');
@@ -705,7 +786,7 @@ function updateNav() {
   const scrollPos = window.scrollY + 100;
 
   sections.forEach(section => {
-    // ★ 핵심 수정: 부모 기준의 offsetTop 대신, 문서 전체 기준의 '절대 Y좌표'를 계산합니다.
+    // 절대 Y좌표 계산
     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
 
     if (scrollPos >= sectionTop) {
@@ -743,13 +824,11 @@ document.querySelectorAll('.faq-q').forEach(btn => {
   });
 });
 
-
-
-// 4. 스크롤 애니메이션 (페이드인) 옵저버
+// 3. 스크롤 애니메이션 (페이드인) 옵저버
 const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// 5. 서버 상태(핑) 체크 스크립트
+// 4. 서버 상태(핑) 체크 스크립트
 const BACKEND = 'https://meetalarm.onrender.com';
 async function checkServer() {
   const dot = document.getElementById('sdot'), txt = document.getElementById('stext');
