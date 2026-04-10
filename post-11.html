@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일탈 전산화와 오딧 트레일 완벽 구현 - Enterprise QMS Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #1BB5B8; --bg: #05080a; --bg2: #0c1419; --text: #e8f4f5; --text2: #7a9ea3; --border: rgba(27,181,184,0.2); }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; margin: 0; padding: 0; }
+  nav { background: rgba(5,8,10,0.95); border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--text); text-decoration: none; font-size: 20px; }
+  .container { max-width: 800px; margin: 60px auto; padding: 0 24px; }
+  
+  .article-header { margin-bottom: 40px; text-align: center; }
+  .article-header h1 { font-size: clamp(24px, 4vw, 36px); color: var(--text); margin-bottom: 15px; font-weight: 800; line-height: 1.4; letter-spacing: -1px; }
+  .article-meta { color: var(--text2); font-size: 14px; }
+  
+  .article-content { background: var(--bg2); border: 1px solid rgba(167, 139, 250, 0.2); border-radius: 24px; padding: 48px; }
+  .article-content h2 { color: #a78bfa; font-size: 22px; margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(167, 139, 250, 0.2); }
+  .article-content h2:first-child { margin-top: 0; }
+  .article-content h3 { color: #fff; font-size: 18px; margin-top: 30px; margin-bottom: 15px; }
+  .article-content p { color: var(--text2); font-size: 16px; margin-bottom: 24px; text-align: justify; line-height: 1.9; }
+  .article-content ul { color: var(--text2); padding-left: 20px; margin-bottom: 24px; }
+  .article-content li { margin-bottom: 10px; }
+  .article-content strong { color: var(--text); font-weight: 700; background: rgba(167, 139, 250, 0.15); padding: 2px 6px; border-radius: 4px; }
+  
+  .back-btn { display: inline-block; color: #a78bfa; text-decoration: none; font-weight: 700; margin-bottom: 30px; font-size: 15px; }
+  .back-btn:hover { text-decoration: underline; }
+
+  footer { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); background: var(--bg2); margin-top: 80px; }
+</style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">🏢 eQMS <span style="color:#a78bfa">Cloud</span></a>
+    <div style="display:flex; gap:20px; align-items:center;">
+      <a href="blog.html" style="color:var(--text2); text-decoration:none; font-size:14px;">목록으로</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <a href="blog.html" class="back-btn">← 블로그 목록으로 돌아가기</a>
+    
+    <div class="article-header">
+      <h1 style="color: #a78bfa;">제약·바이오 품질 관리의 핵심: 일탈(Deviation) 전산화와 오딧 트레일 완벽 구현</h1>
+      <div class="article-meta">게재일: 2026. 04. 10 | 카테고리: eQMS / GMP 규정 준수</div>
+    </div>
+
+    <div class="article-content">
+      <h2>1. 종이 기반 품질 관리의 치명적 한계</h2>
+      <p>제약·바이오 현장에서 15년 이상 실무를 겪어본 담당자라면 누구나 공감할 것입니다. 무균 공정이나 생산 라인에서 발생하는 일탈(Deviation)을 수기 결재나 엑셀로 관리하는 것은 엄청난 리스크를 안고 있습니다. 서류가 분실되거나, 결재권자의 부재로 처리가 지연되고, 실사(Inspection) 때마다 과거의 기록을 찾느라 전 부서가 매달리는 비효율은 기업의 품질 경쟁력을 심각하게 갉아먹습니다.</p>
+
+      <h2>2. 현장의 언어로 설계된 일탈 생애주기(Lifecycle) 관리</h2>
+      <p>단순한 범용 IT 솔루션이 아닙니다. eQMS Cloud는 실제 GMP 현장의 일탈 발생부터 조사, CAPA(시정 및 예방 조치), 그리고 최종 QA 승인(Closed)까지 이어지는 일련의 절차를 현장 프로세스 그대로 전산화했습니다.</p>
+      
+      <ul>
+        <li><strong>현장 발생 보고:</strong> 작업자가 이상 발생 즉시 초기 조치사항을 시스템에 등록합니다.</li>
+        <li><strong>QA 초기 평가:</strong> QA 부서가 즉각적으로 일탈 등급(Critical, Major, Minor)을 분류하고 관련 부서로 조사를 배정합니다.</li>
+        <li><strong>구조화된 원인 조사:</strong> 지정된 조사자(Investigator)가 근본 원인을 파악하고 시스템 내에서 보고서를 작성하여 결재 라인을 태웁니다.</li>
+      </ul>
+
+      <h2>3. 철저한 권한 기반 접근 통제 (RBAC)</h2>
+      <p>규제 기관에서 실사 시 가장 예민하게 보는 것은 <strong>'누가 이 데이터를 작성하고 승인했는가?'</strong>입니다. eQMS는 철저한 RBAC(Role-Based Access Control)를 적용합니다. 시스템 관리자, QA 담당자, 부서장, 일반 조사자의 권한이 시스템적으로 명확히 분리되어 있어, 권한이 없는 자는 절대 일탈의 등급을 임의로 변경하거나 조사를 닫을 수 없도록 원천 차단됩니다.</p>
+
+      <h2>4. FDA 21 CFR Part 11과 완벽한 오딧 트레일 (Audit Trail)</h2>
+      <p>제약 산업에서 데이터 완전성(Data Integrity)은 절대 타협할 수 없는 가치입니다. 추적 불가능한 수정 내역은 eQMS 내에 존재하지 않습니다.</p>
+      <p>누가, 언제, 어떤 환경에서 접속하여 일탈 보고서의 특정 필드를 어떻게 수정했는지(기존 값 ➔ 변경 값)가 백그라운드에 암호화되어 분초 단위로 모두 기록됩니다. 최고 관리자조차 이 로그를 임의로 삭제하거나 조작할 수 없도록 설계된 <strong>오딧 트레일(Audit Trail)</strong> 시스템은 FDA를 비롯한 글로벌 규제 기관의 혹독한 실사(Inspection)에 대응하는 가장 완벽한 방패가 되어줄 것입니다.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p style="color:var(--text2); font-size:14px;">© 2026 MeetAlarm Insight Archive. All rights reserved.</p>
+  </footer>
+</body>
+</html>
