@@ -3,42 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>개인정보처리방침 - MeetAlarm</title>
+<title>개인정보처리방침 - MeetAlarm & eQMS</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  body { background: #05080a; color: #e8f4f5; font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; padding: 40px 24px; }
-  .container { max-width: 800px; margin: 0 auto; background: #0c1419; border: 1px solid rgba(27,181,184,0.2); border-radius: 16px; padding: 40px; }
-  h1 { color: #1BB5B8; margin-bottom: 24px; font-size: 24px; border-bottom: 1px solid rgba(27,181,184,0.2); padding-bottom: 16px; }
-  p, li { font-size: 15px; color: #7a9ea3; margin-bottom: 12px; }
-  h2 { font-size: 18px; color: #e8f4f5; margin: 24px 0 12px; }
-  .back-btn { display: inline-block; margin-bottom: 24px; color: #1BB5B8; text-decoration: none; font-weight: bold; }
+  :root { --brand: #1BB5B8; --bg: #05080a; --bg2: #0c1419; --text: #e8f4f5; --text2: #7a9ea3; --border: rgba(27,181,184,0.2); }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; padding: 40px 24px; margin: 0; }
+  .container { max-width: 800px; margin: 0 auto; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 40px; }
+  h1 { color: var(--brand); margin-bottom: 24px; font-size: 24px; border-bottom: 1px solid var(--border); padding-bottom: 16px; font-weight: 700; }
+  p, li { font-size: 15px; color: var(--text2); margin-bottom: 12px; text-align: justify; }
+  h2 { font-size: 18px; color: var(--text); margin: 30px 0 15px; }
+  .back-btn { display: inline-block; margin-bottom: 24px; color: var(--brand); text-decoration: none; font-weight: bold; font-size: 15px; }
   .back-btn:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
   <div class="container">
     <a href="index.html" class="back-btn">← 메인으로 돌아가기</a>
-    <h1>MeetAlarm 개인정보처리방침</h1>
+    <h1>MeetAlarm & eQMS 개인정보처리방침</h1>
     
-    <p>MeetAlarm은 사용자의 정보를 매우 중요하게 생각하며 안전하게 보호하고 있습니다.</p>
+    <p>MeetAlarm 및 eQMS 서비스(이하 '본 서비스')는 사용자의 개인정보 보호를 매우 중요하게 생각하며, 관련 법령을 준수하고 있습니다.</p>
 
-    <h2>1. 수집하는 개인정보 항목</h2>
+    <h2>제 1 조 (수집하는 개인정보 항목)</h2>
     <ul>
-      <li>필수항목: 식별용 이름(실명 불필요), 접속을 위한 비밀번호</li>
-      <li>자동수집항목: 접속 IP 정보, 서비스 이용 기록(로그)</li>
+      <li>수집 항목: 이메일, 이름, 부서명(선택), 접속 IP, 서비스 이용 기록</li>
+      <li>수집 목적: 서비스 제공, 사용자 식별, 부서 및 그룹 단위의 캘린더 동기화, 고객 지원</li>
     </ul>
 
-    <h2>2. 개인정보의 이용 목적</h2>
-    <p>수집된 정보는 알람 발송, 일정 공유, 그룹 간 전환 기능 제공 등 핵심 서비스 운영을 위해서만 사용됩니다.</p>
+    <h2>제 2 조 (개인정보의 보유 및 이용기간)</h2>
+    <p>원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 사용자 본인이 계정을 삭제하기 전까지는 원활한 서비스(회의록 아카이빙 등) 제공을 위해 정보를 보관합니다.</p>
 
-    <h2>3. 개인정보의 보유 및 이용기간</h2>
-    <p>원칙적으로 개인정보는 회원이 직접 탈퇴하거나 그룹 관리자가 데이터를 삭제할 때까지 보존되며, 목적 달성 후에는 지체 없이 파기합니다.</p>
+    <h2>제 3 조 (개인정보의 파기절차 및 방법)</h2>
+    <p>사용자가 회원 탈퇴를 요청하거나 개인정보 삭제를 요구할 경우, DB에서 지체 없이 영구 삭제되며 복구할 수 없는 방법으로 파기됩니다.</p>
 
-    <h2>4. 개인정보의 제3자 제공</h2>
-    <p>당사는 법령에 규정된 경우를 제외하고는 사용자의 개인정보를 외부 제3자에게 절대 제공하지 않습니다.</p>
+    <h2>제 4 조 (개인정보의 제3자 제공)</h2>
+    <p>본 서비스는 사용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우는 예외로 합니다.</p>
 
-    <h2>5. 연락처</h2>
-    <p>본 서비스와 관련된 문의사항은 admin@meetalarm.com 으로 연락 주시기 바랍니다.</p>
+    <h2>제 5 조 (보안 및 데이터 보호)</h2>
+    <p>본 서비스는 무단 접근을 방지하기 위해 초대코드 기반의 워크스페이스 격리 및 암호화 통신을 사용하고 있으며, 안전한 데이터 관리에 최선을 다하고 있습니다.</p>
+
+    <h2>제 6 조 (웹사이트 쿠키 및 타사 광고 게재) ★</h2>
+    <ul>
+      <li>본 웹사이트는 Google AdSense를 포함한 타사 광고 공급업체의 광고를 게재할 수 있습니다.</li>
+      <li>Google 및 타사 공급업체는 쿠키를 사용하여 사용자가 본 웹사이트 또는 다른 웹사이트를 방문한 사전 기록을 기반으로 맞춤형 광고를 게재합니다.</li>
+      <li>Google의 광고 쿠키 사용으로 인해 Google 및 파트너는 사용자의 인터넷 웹사이트 방문 기록을 기반으로 사용자에게 광고를 게재할 수 있습니다.</li>
+      <li>사용자는 <a href="https://myadcenter.google.com/" target="_blank" style="color:var(--brand);">Google 광고 설정</a>에 방문하여 맞춤설정 광고를 선택 해제할 수 있습니다. (또는 <a href="https://www.aboutads.info/" target="_blank" style="color:var(--brand);">www.aboutads.info</a>를 방문하여 맞춤설정 광고에 사용되는 타사 공급업체의 쿠키 사용을 선택 해제할 수 있습니다.)</li>
+    </ul>
+
+    <h2>제 7 조 (연락처)</h2>
+    <p>개인정보 보호와 관련된 문의사항은 아래 연락처로 문의해 주시기 바랍니다.<br>
+    - 이메일: meetalarm.support@example.com</p>
   </div>
 </body>
 </html>
