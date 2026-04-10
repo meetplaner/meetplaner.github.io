@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인·팀·전체 권한별 캘린더 완벽 활용법 - MeetAlarm Insight</title>
+<meta name="description" content="나만 보는 개인 일정, 팀원끼리만 공유하는 팀 일정, 전사에 공개하는 전체 일정. 3단계 권한별 캘린더를 어떻게 설계하고 운영해야 조직의 정보 흐름이 가장 효율적으로 작동하는지 알아봅니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #1BB5B8; --bg: #05080a; --bg2: #0c1419; --bg3: #101c22; --text: #e8f4f5; --text2: #7a9ea3; --text3: #3d6068; --border: rgba(27,181,184,0.2); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; }
+  nav { background: rgba(5,8,10,0.95); border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--text); text-decoration: none; font-size: 20px; }
+  .app-btn { background: var(--brand); color: #fff; text-decoration: none; font-weight: 800; padding: 10px 20px; border-radius: 10px; font-size: 14px; }
+  .hero-post { padding: 80px 24px 48px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(27,181,184,0.04) 0%, transparent 100%); }
+  .breadcrumb { font-size: 13px; color: var(--text3); margin-bottom: 20px; }
+  .breadcrumb a { color: var(--brand); text-decoration: none; }
+  .tag { background: rgba(27,181,184,0.15); color: var(--brand); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 24px; }
+  .post-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 5vw, 44px); font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; }
+  .post-meta { font-size: 13px; color: var(--text3); display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .container { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
+  .lead { font-size: 18px; color: var(--text2); line-height: 1.9; margin-bottom: 40px; padding: 28px 32px; background: var(--bg2); border-left: 3px solid var(--brand); border-radius: 0 12px 12px 0; }
+  h2 { font-size: 22px; font-weight: 700; color: var(--text); margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  p { font-size: 16px; color: var(--text2); line-height: 1.9; margin-bottom: 20px; text-align: justify; }
+  strong { color: var(--brand); font-weight: 700; }
+  .highlight-box { background: rgba(27,181,184,0.06); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .highlight-box p { margin-bottom: 0; font-size: 15px; }
+  .tier-stack { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .tier { border-radius: 14px; padding: 24px 28px; border: 1px solid; }
+  .tier.personal { background: rgba(167,139,250,0.06); border-color: rgba(167,139,250,0.25); }
+  .tier.team { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.25); }
+  .tier.all { background: rgba(27,181,184,0.06); border-color: rgba(27,181,184,0.25); }
+  .tier-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .tier-badge { padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 800; }
+  .tier.personal .tier-badge { background: rgba(167,139,250,0.2); color: #a78bfa; }
+  .tier.team .tier-badge { background: rgba(245,158,11,0.2); color: #f59e0b; }
+  .tier.all .tier-badge { background: rgba(27,181,184,0.2); color: var(--brand); }
+  .tier-label { font-size: 17px; font-weight: 700; color: var(--text); }
+  .tier-desc { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 12px; }
+  .tier-examples { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tier-ex { font-size: 12px; color: var(--text2); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 6px; }
+  .design-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+  .design-table th { background: var(--bg3); color: var(--text3); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  .design-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text2); vertical-align: middle; }
+  .design-table td:first-child { font-weight: 700; color: var(--text); }
+  .dot-p { width: 8px; height: 8px; border-radius: 50%; background: #a78bfa; display: inline-block; }
+  .dot-t { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block; }
+  .dot-a { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); display: inline-block; }
+  .step-list { list-style: none; padding: 0; margin: 24px 0; counter-reset: steps; }
+  .step-list li { counter-increment: steps; padding: 16px 16px 16px 58px; position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; font-size: 15px; color: var(--text2); line-height: 1.75; }
+  .step-list li::before { content: counter(steps); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: linear-gradient(135deg, var(--brand), #149194); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #fff; text-align: center; line-height: 30px; }
+  .link-box { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed var(--border); margin-top: 48px; flex-wrap: wrap; gap: 12px; }
+  .link-box span { font-size: 14px; color: var(--text2); }
+  .link-box a { color: var(--brand); text-decoration: none; font-weight: 700; font-size: 14px; border-bottom: 1px solid var(--brand); }
+  .nav-posts { display: flex; justify-content: space-between; gap: 16px; margin-top: 60px; flex-wrap: wrap; }
+  .nav-post-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; text-decoration: none; color: var(--text2); font-size: 13px; flex: 1; min-width: 180px; transition: border-color 0.2s; }
+  .nav-post-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .nav-post-btn span { display: block; font-size: 11px; color: var(--text3); margin-bottom: 6px; }
+  footer { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); background: var(--bg2); }
+  .f-btn { background: var(--brand); color: #fff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 16px; display: inline-block; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(27,181,184,0.3); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">⏰ MeetAlarm <span style="color:var(--brand)">Insight</span></a>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <a href="blog.html" style="color:var(--text2); text-decoration:none; font-size:14px;">블로그</a>
+    <a href="https://meetplaner.github.io/meetalarm/" class="app-btn">앱 시작하기 →</a>
+  </div>
+</nav>
+
+<div class="hero-post">
+  <div class="breadcrumb"><a href="blog.html">블로그</a> &nbsp;/&nbsp; 조직 설계</div>
+  <span class="tag">조직 설계</span>
+  <h1 class="post-title">개인·팀·전체<br>권한별 캘린더 완벽 활용법</h1>
+  <div class="post-meta">
+    <span>📅 2026년 4월</span>
+    <span>⏱ 읽는 시간 약 4분</span>
+    <span>✍️ MeetAlarm Insight</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="lead">모든 일정을 모두에게 공개하는 것은 정보 과부하를 만듭니다. 반대로 모든 것을 숨기면 협업이 단절됩니다. 좋은 캘린더 시스템은 '누가 무엇을 볼 수 있는가'를 정교하게 설계합니다. 개인, 팀, 전체 세 단계의 공개 범위 설정이 조직의 정보 흐름을 결정합니다.</p>
+
+  <h2>3단계 권한 구조 이해하기</h2>
+
+  <div class="tier-stack">
+    <div class="tier personal">
+      <div class="tier-header">
+        <span class="tier-badge">개인 일정</span>
+        <span class="tier-label">🔒 나만 보는 일정</span>
+      </div>
+      <div class="tier-desc">오직 본인만 볼 수 있는 일정입니다. 업무 중 개인 약속, 병원 예약, 집중 근무 시간 블록 등 팀원과 공유하지 않아도 되는 모든 일정에 적합합니다. 개인 캘린더는 다른 팀원의 일정 뷰에 표시되지 않습니다.</div>
+      <div class="tier-examples">
+        <span class="tier-ex">💊 병원 예약</span>
+        <span class="tier-ex">📞 개인 전화</span>
+        <span class="tier-ex">🎯 집중 근무 블록</span>
+        <span class="tier-ex">✈️ 출장 이동 시간</span>
+        <span class="tier-ex">📚 자기 계발 시간</span>
+      </div>
+    </div>
+    <div class="tier team">
+      <div class="tier-header">
+        <span class="tier-badge">팀 일정</span>
+        <span class="tier-label">👥 같은 팀원끼리만 공유</span>
+      </div>
+      <div class="tier-desc">동일 부서 혹은 지정된 팀원들과만 공유되는 일정입니다. 타 부서에는 노출되지 않아 정보를 적절히 제한하면서도 관련 팀원 전체와 실시간으로 동기화됩니다. 팀 내 알람도 자동 발송됩니다.</div>
+      <div class="tier-examples">
+        <span class="tier-ex">📊 주간 팀 KPI 리뷰</span>
+        <span class="tier-ex">🔧 개발팀 스프린트 회의</span>
+        <span class="tier-ex">💡 신제품 브레인스토밍</span>
+        <span class="tier-ex">📋 팀 내 인수인계</span>
+      </div>
+    </div>
+    <div class="tier all">
+      <div class="tier-header">
+        <span class="tier-badge">전체 일정</span>
+        <span class="tier-label">🌐 전사 공개 일정</span>
+      </div>
+      <div class="tier-desc">워크스페이스 내 모든 팀원이 볼 수 있는 일정입니다. 회사 전체가 알아야 하는 공휴일, 전사 회의, 워크숍, 창립기념일 등에 활용합니다. 전사 일정은 모든 팀원의 캘린더에 자동으로 반영됩니다.</div>
+      <div class="tier-examples">
+        <span class="tier-ex">🏢 전사 타운홀 미팅</span>
+        <span class="tier-ex">🎉 창립기념일 행사</span>
+        <span class="tier-ex">📅 회사 공휴일</span>
+        <span class="tier-ex">🎓 전사 교육 세션</span>
+        <span class="tier-ex">🚀 신제품 런칭 데이</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>어떤 일정을 어디에 넣어야 할까?</h2>
+
+  <p>권한 설정에서 많은 팀이 혼란을 겪는 이유는 명확한 기준이 없기 때문입니다. 다음 판단 기준을 팀 내에서 공유하면 일관된 운영이 가능합니다.</p>
+
+  <table class="design-table">
+    <tr>
+      <th>판단 질문</th>
+      <th>권장 설정</th>
+    </tr>
+    <tr>
+      <td>이 일정에 다른 사람이 참석하는가?</td>
+      <td><span class="dot-t"></span> 팀 또는 <span class="dot-a"></span> 전체</td>
+    </tr>
+    <tr>
+      <td>특정 팀만 알면 되는 내용인가?</td>
+      <td><span class="dot-t"></span> 팀 일정</td>
+    </tr>
+    <tr>
+      <td>나의 부재 또는 외근을 팀이 알아야 하는가?</td>
+      <td><span class="dot-t"></span> 팀 일정</td>
+    </tr>
+    <tr>
+      <td>회사 전체 공지 또는 행사인가?</td>
+      <td><span class="dot-a"></span> 전체 일정</td>
+    </tr>
+    <tr>
+      <td>개인적인 약속이거나 집중 시간 블록인가?</td>
+      <td><span class="dot-p"></span> 개인 일정</td>
+    </tr>
+  </table>
+
+  <h2>권한별 캘린더가 조직에 미치는 영향</h2>
+
+  <p>권한 구조가 잘 설계된 조직에서는 불필요한 정보 요청이 현저히 줄어듭니다. "김 팀장님 언제 자리에 계세요?", "마케팅팀 이번 주 일정 좀 알 수 있을까요?"와 같은 질문들이 사라집니다. 대신 팀원은 캘린더를 직접 확인하고 필요한 시간에 미팅을 잡습니다.</p>
+
+  <p>반대로 권한 구조가 없거나 모든 것이 공개되는 구조에서는 <strong>정보 과부하</strong>가 발생합니다. 전사 100명의 모든 일정이 나의 캘린더에 노출된다면, 정작 내가 집중해야 하는 팀의 일정을 찾는 것이 더 어려워집니다. 적절한 정보 필터링이 팀의 집중력을 보존합니다.</p>
+
+  <ul class="step-list">
+    <li><strong>'오늘의 할 일' 대시보드 활용</strong> — 매일 아침 '오늘 내 일정' 뷰를 통해 개인·팀·전체 일정 중 오늘 나와 관련된 것만 모아서 확인할 수 있습니다. 전체 캘린더를 뒤지지 않아도 됩니다.</li>
+    <li><strong>필터링으로 집중 모드 전환</strong> — 클릭 한 번으로 개인 일정만, 팀 일정만, 전체 일정만 표시할 수 있습니다. 특정 업무에 집중해야 할 때 관련 없는 일정들을 화면에서 제거하십시오.</li>
+    <li><strong>부재 일정은 팀 공개로 등록</strong> — 반차, 외근, 재택 등 본인의 부재 상황은 반드시 팀 일정으로 등록하십시오. 팀원이 메신저로 물어보는 상황을 방지하고, 팀 자율성을 높이는 가장 간단한 방법입니다.</li>
+    <li><strong>전체 일정은 관리자가 관리</strong> — 전체 공개 일정의 등록 권한을 관리자 또는 지정된 담당자에게만 부여하면 전사 캘린더의 품질을 유지할 수 있습니다. 잘못된 정보가 전사에 공유되는 상황을 방지합니다.</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p>💡 <strong>팀 규칙 제안:</strong> 권한별 캘린더를 도입할 때 팀 내에서 짧은 운영 규칙을 함께 만들어두면 일관성이 유지됩니다. "반차는 팀 일정으로 등록", "전사 미팅은 전체 일정으로", "개인 집중 시간은 개인 일정에 블록" 같은 3가지 규칙만 있어도 혼란 없이 운영됩니다. 처음 한 번만 정해두면 그 다음부터는 팀원 모두가 자연스럽게 따르게 됩니다.</p>
+  </div>
+
+  <div class="link-box">
+    <span>🗓️ 추천 기능: 권한별 맞춤형 캘린더 & 오늘의 할 일 대시보드</span>
+    <a href="index.html#g-dash">MeetAlarm에서 직접 확인하기 →</a>
+  </div>
+
+  <div class="nav-posts">
+    <a href="post-07.html" class="nav-post-btn">
+      <span>← 이전 글</span>
+      멀티 워크스페이스로 여러 조직 관리하기
+    </a>
+    <a href="blog.html" class="nav-post-btn" style="text-align:right;">
+      <span>블로그 목록으로 →</span>
+      전체 인사이트 보기
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://meetplaner.github.io/meetalarm/" class="f-btn">지금 무료로 시작하기 →</a>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:24px;">MeetAlarm은 전 세계 조직의 생산성 향상을 위해 끊임없이 연구합니다.</p>
+  <div style="font-size:12px; color:var(--text3);">
+    <a href="terms.html" style="color:var(--text3); margin-right:15px;">이용약관</a>
+    <a href="privacy.html" style="color:var(--text3);">개인정보처리방침</a>
+    <p style="margin-top:16px;">© 2026 MeetAlarm Insight Archive. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

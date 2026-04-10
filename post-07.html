@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>멀티 워크스페이스: 여러 회사와 프로젝트를 로그아웃 없이 한 번에 관리하기 - MeetAlarm Insight</title>
+<meta name="description" content="두 개 이상의 회사, 프로젝트, 모임을 동시에 운영하는 분들을 위한 멀티 워크스페이스 전략. 탭 한 번으로 컨텍스트를 전환하고 각 조직의 일정을 완벽하게 분리 관리하는 방법을 알아봅니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #1BB5B8; --bg: #05080a; --bg2: #0c1419; --bg3: #101c22; --text: #e8f4f5; --text2: #7a9ea3; --text3: #3d6068; --border: rgba(27,181,184,0.2); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; }
+  nav { background: rgba(5,8,10,0.95); border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--text); text-decoration: none; font-size: 20px; }
+  .app-btn { background: var(--brand); color: #fff; text-decoration: none; font-weight: 800; padding: 10px 20px; border-radius: 10px; font-size: 14px; }
+  .hero-post { padding: 80px 24px 48px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(27,181,184,0.04) 0%, transparent 100%); }
+  .breadcrumb { font-size: 13px; color: var(--text3); margin-bottom: 20px; }
+  .breadcrumb a { color: var(--brand); text-decoration: none; }
+  .tag { background: rgba(27,181,184,0.15); color: var(--brand); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 24px; }
+  .post-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 5vw, 44px); font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; }
+  .post-meta { font-size: 13px; color: var(--text3); display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .container { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
+  .lead { font-size: 18px; color: var(--text2); line-height: 1.9; margin-bottom: 40px; padding: 28px 32px; background: var(--bg2); border-left: 3px solid var(--brand); border-radius: 0 12px 12px 0; }
+  h2 { font-size: 22px; font-weight: 700; color: var(--text); margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  p { font-size: 16px; color: var(--text2); line-height: 1.9; margin-bottom: 20px; text-align: justify; }
+  strong { color: var(--brand); font-weight: 700; }
+  .highlight-box { background: rgba(27,181,184,0.06); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .highlight-box p { margin-bottom: 0; font-size: 15px; }
+  .persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 28px 0; }
+  .persona { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .persona .icon { font-size: 32px; margin-bottom: 10px; }
+  .persona .role { font-size: 13px; font-weight: 700; color: var(--brand); margin-bottom: 6px; }
+  .persona .situation { font-size: 13px; color: var(--text2); line-height: 1.65; }
+  .workspace-visual { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin: 28px 0; }
+  .ws-title { font-size: 12px; color: var(--text3); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .ws-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .ws-tab { padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; border: 1px solid var(--border); color: var(--text2); }
+  .ws-tab.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .ws-content { background: var(--bg3); border-radius: 10px; padding: 16px 20px; }
+  .ws-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; }
+  .ws-row:last-child { border-bottom: none; }
+  .ws-row span:first-child { color: var(--text2); }
+  .ws-row span:last-child { color: var(--text); font-weight: 600; }
+  .benefit-list { list-style: none; padding: 0; margin: 24px 0; }
+  .benefit-list li { padding: 14px 14px 14px 48px; position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; font-size: 15px; color: var(--text2); line-height: 1.75; }
+  .benefit-list li::before { content: '✓'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; background: rgba(27,181,184,0.15); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: var(--brand); text-align: center; line-height: 24px; }
+  .link-box { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed var(--border); margin-top: 48px; flex-wrap: wrap; gap: 12px; }
+  .link-box span { font-size: 14px; color: var(--text2); }
+  .link-box a { color: var(--brand); text-decoration: none; font-weight: 700; font-size: 14px; border-bottom: 1px solid var(--brand); }
+  .nav-posts { display: flex; justify-content: space-between; gap: 16px; margin-top: 60px; flex-wrap: wrap; }
+  .nav-post-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; text-decoration: none; color: var(--text2); font-size: 13px; flex: 1; min-width: 180px; transition: border-color 0.2s; }
+  .nav-post-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .nav-post-btn span { display: block; font-size: 11px; color: var(--text3); margin-bottom: 6px; }
+  footer { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); background: var(--bg2); }
+  .f-btn { background: var(--brand); color: #fff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 16px; display: inline-block; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(27,181,184,0.3); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">⏰ MeetAlarm <span style="color:var(--brand)">Insight</span></a>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <a href="blog.html" style="color:var(--text2); text-decoration:none; font-size:14px;">블로그</a>
+    <a href="https://meetplaner.github.io/meetalarm/" class="app-btn">앱 시작하기 →</a>
+  </div>
+</nav>
+
+<div class="hero-post">
+  <div class="breadcrumb"><a href="blog.html">블로그</a> &nbsp;/&nbsp; 업무 효율화</div>
+  <span class="tag">업무 효율화</span>
+  <h1 class="post-title">멀티 워크스페이스:<br>여러 조직을 로그아웃 없이 한 번에 관리하기</h1>
+  <div class="post-meta">
+    <span>📅 2026년 4월</span>
+    <span>⏱ 읽는 시간 약 4분</span>
+    <span>✍️ MeetAlarm Insight</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="lead">본업 회사, 사이드 프로젝트, 동호회, 가족 모임. 현대인이 동시에 소속된 조직의 수는 평균 3개를 넘습니다. 각각의 앱 계정을 오가며 로그인과 로그아웃을 반복하는 것은 시간 낭비인 동시에 집중력을 갉아먹는 대표적인 마찰입니다. 하나의 앱에서 모든 조직을 탭 전환 한 번으로 오갈 수 있다면 어떨까요?</p>
+
+  <h2>이런 분들에게 멀티 워크스페이스는 필수입니다</h2>
+
+  <div class="persona-grid">
+    <div class="persona">
+      <div class="icon">🏢</div>
+      <div class="role">프리랜서 · N잡러</div>
+      <div class="situation">2개 이상의 클라이언트사 미팅을 동시에 관리해야 하는 분. 각 클라이언트별로 워크스페이스를 분리하면 일정이 섞이지 않습니다.</div>
+    </div>
+    <div class="persona">
+      <div class="icon">👔</div>
+      <div class="role">스타트업 공동창업자</div>
+      <div class="situation">본업과 창업 프로젝트를 병행하는 분. 두 조직의 팀원, 미팅, 아카이브를 완전히 분리하여 관리할 수 있습니다.</div>
+    </div>
+    <div class="persona">
+      <div class="icon">🌐</div>
+      <div class="role">해외 지사 관리자</div>
+      <div class="situation">본사와 지사를 각각 관리해야 하는 분. 각 법인별 조직도와 일정을 별도로 운영하면서도 한 앱에서 전환합니다.</div>
+    </div>
+    <div class="persona">
+      <div class="icon">⚽</div>
+      <div class="role">모임 · 동호회 운영자</div>
+      <div class="situation">회사 일정과 사적 모임 일정을 완전히 분리하고 싶은 분. 정보 보안과 심리적 분리가 동시에 가능합니다.</div>
+    </div>
+  </div>
+
+  <h2>컨텍스트 스위칭의 비용: 로그아웃이 얼마나 비싼가</h2>
+
+  <p>로그아웃하고 다른 계정으로 로그인하는 행위는 단순히 10~20초의 시간을 소비하는 것에 그치지 않습니다. 심리학 연구에 따르면 <strong>사용 중인 도구에서 인터럽트가 발생하면 이전 작업으로 복귀하는 데 평균 23분이 걸립니다.</strong> 로그인 화면을 마주하는 순간, 뇌는 무의식적으로 새로운 컨텍스트로의 전환을 준비하고, 이전 작업에 대한 집중력은 리셋됩니다.</p>
+
+  <p>하루에 5번 워크스페이스를 전환해야 하는 상황에서, 매번 로그아웃과 로그인을 반복하면 총 115분의 집중력 손실이 발생합니다. 반면 탭 한 번으로 워크스페이스를 전환하는 방식은 인지적 전환 비용을 거의 0에 가깝게 줄입니다.</p>
+
+  <div class="workspace-visual">
+    <div class="ws-title">📱 워크스페이스 전환 예시</div>
+    <div class="ws-tabs">
+      <div class="ws-tab active">🏢 본업 회사</div>
+      <div class="ws-tab">🚀 사이드 프로젝트</div>
+      <div class="ws-tab">⚽ 동호회</div>
+    </div>
+    <div class="ws-content">
+      <div class="ws-row"><span>오늘 미팅</span><span>마케팅팀 주간 리뷰 09:00</span></div>
+      <div class="ws-row"><span>팀원 수</span><span>24명 (4개 부서)</span></div>
+      <div class="ws-row"><span>이번 주 전체 일정</span><span>8건</span></div>
+      <div class="ws-row"><span>미완료 액션 아이템</span><span>3건</span></div>
+    </div>
+  </div>
+
+  <h2>멀티 워크스페이스가 만드는 3가지 분리</h2>
+
+  <p>단순한 편의성을 넘어, 멀티 워크스페이스는 현대인이 필요로 하는 세 가지 분리를 동시에 실현합니다.</p>
+
+  <ul class="benefit-list">
+    <li><strong>정보 분리:</strong> A 회사의 미팅 정보가 B 프로젝트 팀원에게 노출되지 않습니다. 각 워크스페이스는 완전히 독립된 데이터 공간으로 운영됩니다. 한 조직의 초대코드로는 다른 조직에 접근할 수 없습니다.</li>
+    <li><strong>심리적 분리:</strong> 업무 워크스페이스를 닫고 가족 모임 워크스페이스로 전환하는 행위 자체가 '퇴근'의 의식이 될 수 있습니다. 물리적 공간의 분리 없이도 정신적 전환이 가능합니다.</li>
+    <li><strong>알람 분리:</strong> 각 워크스페이스의 알람 설정이 독립적으로 운영됩니다. 주말에는 회사 워크스페이스 알람을 끄고, 사적 모임 알람만 활성화하는 방식으로 진정한 휴식을 보장할 수 있습니다.</li>
+  </ul>
+
+  <h2>새 워크스페이스 추가는 언제든 가능합니다</h2>
+
+  <p>새 프로젝트가 시작되거나, 새로운 모임의 총무를 맡게 된 경우, 즉시 새 워크스페이스를 생성하고 기존 앱 환경에 추가할 수 있습니다. 기존 워크스페이스의 데이터나 설정에는 전혀 영향을 주지 않습니다.</p>
+
+  <p>프로젝트가 종료되면 해당 워크스페이스를 비활성화하거나 아카이브로 전환하면 됩니다. <strong>종료된 프로젝트의 모든 회의록과 결정 사항은 아카이브에 영구 보관</strong>되어, 수개월 후 비슷한 프로젝트를 다시 시작할 때 귀중한 레퍼런스가 됩니다.</p>
+
+  <div class="highlight-box">
+    <p>💡 <strong>추천 활용법:</strong> 워크스페이스 이름에 간단한 이모지를 붙여두면 전환 시 시각적으로 즉시 구분이 가능합니다. 예를 들어 🏢 (주요 직장), 🚀 (스타트업 프로젝트), 🏠 (가족 모임)처럼 설정해두면 실수로 잘못된 워크스페이스에 일정을 등록하는 상황을 방지할 수 있습니다.</p>
+  </div>
+
+  <div class="link-box">
+    <span>🏢 추천 기능: 멀티 사업장 원클릭 전환</span>
+    <a href="index.html#g-multi">MeetAlarm에서 직접 확인하기 →</a>
+  </div>
+
+  <div class="nav-posts">
+    <a href="post-06.html" class="nav-post-btn">
+      <span>← 이전 글</span>
+      초대코드 하나로 팀 전체 일정 동기화하기
+    </a>
+    <a href="post-08.html" class="nav-post-btn" style="text-align:right;">
+      <span>다음 글 →</span>
+      개인·팀·전체 권한별 캘린더 완벽 활용법
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://meetplaner.github.io/meetalarm/" class="f-btn">지금 무료로 시작하기 →</a>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:24px;">MeetAlarm은 전 세계 조직의 생산성 향상을 위해 끊임없이 연구합니다.</p>
+  <div style="font-size:12px; color:var(--text3);">
+    <a href="terms.html" style="color:var(--text3); margin-right:15px;">이용약관</a>
+    <a href="privacy.html" style="color:var(--text3);">개인정보처리방침</a>
+    <p style="margin-top:16px;">© 2026 MeetAlarm Insight Archive. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

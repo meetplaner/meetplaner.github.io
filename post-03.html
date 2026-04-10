@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>휘발되는 회의 기록을 강력한 기업 자산으로 만드는 법 - MeetAlarm Insight</title>
+<meta name="description" content="기록되지 않은 회의는 개최되지 않은 것과 같습니다. 회의 아카이브 시스템을 구축하여 팀의 의사결정 히스토리를 가장 강력한 기업 자산으로 전환하는 방법을 알아봅니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #1BB5B8; --bg: #05080a; --bg2: #0c1419; --bg3: #101c22; --text: #e8f4f5; --text2: #7a9ea3; --text3: #3d6068; --border: rgba(27,181,184,0.2); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; }
+  nav { background: rgba(5,8,10,0.95); border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--text); text-decoration: none; font-size: 20px; }
+  .app-btn { background: var(--brand); color: #fff; text-decoration: none; font-weight: 800; padding: 10px 20px; border-radius: 10px; font-size: 14px; }
+
+  .hero-post { padding: 80px 24px 48px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(27,181,184,0.04) 0%, transparent 100%); }
+  .breadcrumb { font-size: 13px; color: var(--text3); margin-bottom: 20px; }
+  .breadcrumb a { color: var(--brand); text-decoration: none; }
+  .tag { background: rgba(27,181,184,0.15); color: var(--brand); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 24px; }
+  .post-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 5vw, 44px); font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; }
+  .post-meta { font-size: 13px; color: var(--text3); display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
+
+  .lead { font-size: 18px; color: var(--text2); line-height: 1.9; margin-bottom: 40px; padding: 28px 32px; background: var(--bg2); border-left: 3px solid var(--brand); border-radius: 0 12px 12px 0; }
+
+  h2 { font-size: 22px; font-weight: 700; color: var(--text); margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  p { font-size: 16px; color: var(--text2); line-height: 1.9; margin-bottom: 20px; text-align: justify; }
+  strong { color: var(--brand); font-weight: 700; }
+
+  .highlight-box { background: rgba(27,181,184,0.06); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .highlight-box p { margin-bottom: 0; font-size: 15px; }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  @media (max-width: 560px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .compare-card.bad { border-color: rgba(239,68,68,0.3); }
+  .compare-card.good { border-color: rgba(34,197,94,0.3); }
+  .compare-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .compare-card.bad .compare-label { color: #ef4444; }
+  .compare-card.good .compare-label { color: #22c55e; }
+  .compare-card ul { list-style: none; padding: 0; }
+  .compare-card li { font-size: 14px; color: var(--text2); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.6; }
+  .compare-card li:last-child { border-bottom: none; }
+
+  .step-list { list-style: none; padding: 0; margin: 24px 0; counter-reset: steps; }
+  .step-list li { counter-increment: steps; padding: 16px 16px 16px 58px; position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; font-size: 15px; color: var(--text2); line-height: 1.75; }
+  .step-list li::before { content: counter(steps); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: linear-gradient(135deg, var(--brand), #149194); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #fff; text-align: center; line-height: 30px; }
+
+  .link-box { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed var(--border); margin-top: 48px; flex-wrap: wrap; gap: 12px; }
+  .link-box span { font-size: 14px; color: var(--text2); }
+  .link-box a { color: var(--brand); text-decoration: none; font-weight: 700; font-size: 14px; border-bottom: 1px solid var(--brand); }
+
+  .nav-posts { display: flex; justify-content: space-between; gap: 16px; margin-top: 60px; flex-wrap: wrap; }
+  .nav-post-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; text-decoration: none; color: var(--text2); font-size: 13px; flex: 1; min-width: 180px; transition: border-color 0.2s; }
+  .nav-post-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .nav-post-btn span { display: block; font-size: 11px; color: var(--text3); margin-bottom: 6px; }
+
+  footer { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); background: var(--bg2); }
+  .f-btn { background: var(--brand); color: #fff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 16px; display: inline-block; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(27,181,184,0.3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">⏰ MeetAlarm <span style="color:var(--brand)">Insight</span></a>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <a href="blog.html" style="color:var(--text2); text-decoration:none; font-size:14px;">블로그</a>
+    <a href="https://meetplaner.github.io/meetalarm/" class="app-btn">앱 시작하기 →</a>
+  </div>
+</nav>
+
+<div class="hero-post">
+  <div class="breadcrumb"><a href="blog.html">블로그</a> &nbsp;/&nbsp; 데이터 자산화</div>
+  <span class="tag">데이터 자산화</span>
+  <h1 class="post-title">휘발되는 회의 기록을<br>강력한 기업 자산으로 만드는 법</h1>
+  <div class="post-meta">
+    <span>📅 2026년 4월</span>
+    <span>⏱ 읽는 시간 약 4분</span>
+    <span>✍️ MeetAlarm Insight</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="lead">오늘 당신의 팀이 나눈 가장 중요한 결정은 어디에 기록되어 있습니까? 메신저 대화창, 누군가의 메모장, 혹은 아무 곳에도 없을 수 있습니다. 기록되지 않은 회의는 사실상 개최되지 않은 것과 같습니다. 조직의 가장 값비싼 낭비는 같은 논의를 반복하는 것입니다.</p>
+
+  <h2>기록 없는 회의가 조직에 남기는 비용</h2>
+
+  <p>대부분의 팀이 경험하는 풍경이 있습니다. 3개월 전 회의에서 분명히 논의했던 사항을 다시 꺼내야 하는 상황, 담당자가 교체됐을 때 프로젝트의 맥락을 처음부터 다시 설명해야 하는 상황, 서로 다른 기억을 가진 두 사람이 "그때 그렇게 결정했잖아요"와 "아니에요, 그건 보류였어요"를 반복하는 상황들입니다.</p>
+
+  <p>이 모든 상황의 공통 원인은 하나입니다. <strong>의사결정이 개인의 기억에만 저장되었기 때문입니다.</strong> 인간의 기억은 선택적이고 변형됩니다. 회의에서 나온 결정이 공식적인 형태로 기록되지 않는 한, 그것은 존재하지 않는 것과 다름없습니다.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card bad">
+      <div class="compare-label">❌ 기록 없는 팀</div>
+      <ul>
+        <li>같은 안건을 반복 논의</li>
+        <li>담당자 교체 시 히스토리 단절</li>
+        <li>결정 근거 추적 불가</li>
+        <li>신입 온보딩에 수개월 소요</li>
+        <li>책임 소재 불분명</li>
+      </ul>
+    </div>
+    <div class="compare-card good">
+      <div class="compare-label">✅ 아카이브 팀</div>
+      <ul>
+        <li>과거 결정 즉시 검색·확인</li>
+        <li>담당자 교체 시 원활한 인수인계</li>
+        <li>결정 배경과 대안 추적 가능</li>
+        <li>신입이 독립적으로 컨텍스트 파악</li>
+        <li>명확한 액션 아이템과 담당자</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>좋은 회의 기록의 5가지 요소</h2>
+
+  <p>회의록이라고 해서 모든 발언을 속기처럼 기록해야 한다는 뜻이 아닙니다. 오히려 지나치게 방대한 회의록은 아무도 읽지 않습니다. 실용적인 회의 기록에는 다섯 가지 핵심 요소가 있습니다.</p>
+
+  <ul class="step-list">
+    <li><strong>회의 목적과 배경</strong> — 이 회의가 왜 열렸는지. 6개월 뒤 기록을 보는 사람도 맥락을 즉시 이해할 수 있어야 합니다.</li>
+    <li><strong>핵심 결정 사항</strong> — 논의 내용이 아닌, 최종적으로 결정된 것만 명확히 기록합니다. "~하기로 했다"는 형식으로 단정적으로 작성하십시오.</li>
+    <li><strong>액션 아이템과 담당자</strong> — 누가, 무엇을, 언제까지 해야 하는지. 담당자가 명시되지 않은 액션 아이템은 아무도 실행하지 않습니다.</li>
+    <li><strong>보류/미결 사항</strong> — 결정되지 않은 것도 기록해야 합니다. 다음 회의에서 반드시 다시 논의해야 하는 안건이 누락되지 않도록 합니다.</li>
+    <li><strong>다음 미팅 일정</strong> — 후속 회의가 있다면 즉시 일정을 확정하고 기록에 포함시킵니다. "다음에 다시 논의하자"는 종종 영원히 미뤄집니다.</li>
+  </ul>
+
+  <h2>아카이브 시스템이 '기업 자산'이 되는 순간</h2>
+
+  <p>단순한 회의록 파일 모음과 진정한 아카이브 시스템의 차이는 <strong>검색 가능성</strong>과 <strong>접근성</strong>에 있습니다. 팀 전원이 언제든지 과거의 결정을 찾아볼 수 있고, 프로젝트별·날짜별로 분류된 기록이 누적될 때 비로소 조직의 집단 지성이 형성됩니다.</p>
+
+  <p>6개월 뒤 합류한 신입 직원이 입사 첫 주에 과거 1년간의 주요 결정 히스토리를 스스로 파악할 수 있다면, 그 팀은 지식 이전 비용이 거의 없는 조직입니다. 이것이 아카이브가 만들어내는 가장 큰 경쟁 우위입니다.</p>
+
+  <div class="highlight-box">
+    <p>💡 <strong>실천 팁:</strong> 회의가 끝나는 즉시 기록하는 것이 원칙입니다. 회의 종료 후 10분 안에 핵심 결정 사항과 액션 아이템만이라도 시스템에 입력하십시오. 시간이 지날수록 기억은 흐려지고, "나중에 정리하자"는 다음 회의 전날까지 미뤄집니다. MeetAlarm의 알람 시스템을 활용하면 회의 종료 직후 '기록 완료' 알람을 팀 전체에 보낼 수 있습니다.</p>
+  </div>
+
+  <h2>MeetAlarm 아카이브 보관함 활용하기</h2>
+
+  <p>MeetAlarm의 미팅 아카이브 기능은 일정 카드와 연동되어 회의 기록을 구조화된 형태로 저장합니다. 참석자, 결정 사항, 첨부 파일, 댓글이 하나의 카드에 통합되기 때문에 후에 관련 정보를 찾을 때 여러 도구를 오가며 검색할 필요가 없습니다.</p>
+
+  <p>특히 <strong>일정별 댓글 기능</strong>은 비동기 환경에서 강력한 힘을 발휘합니다. 회의 직후 결정 사항을 댓글로 남기면, 참석하지 못한 팀원도 자신의 시간에 맥락을 파악하고 피드백을 남길 수 있습니다. 모든 소통이 해당 일정 카드에 축적되어, 6개월 후에도 그 미팅의 전체 맥락을 한 화면에서 확인할 수 있습니다.</p>
+
+  <div class="link-box">
+    <span>📁 추천 기능: 미팅 아카이브 보관함</span>
+    <a href="index.html#g-meeting">MeetAlarm에서 직접 확인하기 →</a>
+  </div>
+
+  <div class="nav-posts">
+    <a href="post-01.html" class="nav-post-btn">
+      <span>← 이전 글</span>
+      화상회의 피로도의 과학적 원인과 해결책
+    </a>
+    <a href="post-05.html" class="nav-post-btn" style="text-align:right;">
+      <span>다음 글 →</span>
+      정기 미팅 템플릿으로 반복 행정 없애기
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://meetplaner.github.io/meetalarm/" class="f-btn">지금 무료로 시작하기 →</a>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:24px;">MeetAlarm은 전 세계 조직의 생산성 향상을 위해 끊임없이 연구합니다.</p>
+  <div style="font-size:12px; color:var(--text3);">
+    <a href="terms.html" style="color:var(--text3); margin-right:15px;">이용약관</a>
+    <a href="privacy.html" style="color:var(--text3);">개인정보처리방침</a>
+    <p style="margin-top:16px;">© 2026 MeetAlarm Insight Archive. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정기 미팅 템플릿: 반복되는 행정 소요를 0으로 줄이기 - MeetAlarm Insight</title>
+<meta name="description" content="매주 반복되는 회의 등록, 알람 설정, 참석자 공지. 이 모든 반복 행정을 정기 미팅 템플릿 하나로 자동화하는 방법과 관리자가 얻는 실질적인 시간 절약 효과를 알아봅니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #1BB5B8; --bg: #05080a; --bg2: #0c1419; --bg3: #101c22; --text: #e8f4f5; --text2: #7a9ea3; --text3: #3d6068; --border: rgba(27,181,184,0.2); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; }
+  nav { background: rgba(5,8,10,0.95); border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--text); text-decoration: none; font-size: 20px; }
+  .app-btn { background: var(--brand); color: #fff; text-decoration: none; font-weight: 800; padding: 10px 20px; border-radius: 10px; font-size: 14px; }
+
+  .hero-post { padding: 80px 24px 48px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(27,181,184,0.04) 0%, transparent 100%); }
+  .breadcrumb { font-size: 13px; color: var(--text3); margin-bottom: 20px; }
+  .breadcrumb a { color: var(--brand); text-decoration: none; }
+  .tag { background: rgba(27,181,184,0.15); color: var(--brand); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 24px; }
+  .post-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 5vw, 44px); font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; }
+  .post-meta { font-size: 13px; color: var(--text3); display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
+
+  .lead { font-size: 18px; color: var(--text2); line-height: 1.9; margin-bottom: 40px; padding: 28px 32px; background: var(--bg2); border-left: 3px solid var(--brand); border-radius: 0 12px 12px 0; }
+
+  h2 { font-size: 22px; font-weight: 700; color: var(--text); margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  p { font-size: 16px; color: var(--text2); line-height: 1.9; margin-bottom: 20px; text-align: justify; }
+  strong { color: var(--brand); font-weight: 700; }
+
+  .highlight-box { background: rgba(27,181,184,0.06); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .highlight-box p { margin-bottom: 0; font-size: 15px; }
+
+  .time-calc { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin: 28px 0; }
+  .time-calc-title { font-size: 13px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+  .time-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; }
+  .time-row:last-child { border-bottom: none; font-weight: 700; color: var(--brand); font-size: 16px; }
+  .time-row span:first-child { color: var(--text2); }
+  .time-row span:last-child { color: var(--text); font-weight: 600; }
+
+  .use-case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 24px 0; }
+  .use-case { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .use-case .icon { font-size: 28px; margin-bottom: 10px; }
+  .use-case .title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .use-case .desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+  .step-list { list-style: none; padding: 0; margin: 24px 0; counter-reset: steps; }
+  .step-list li { counter-increment: steps; padding: 16px 16px 16px 58px; position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; font-size: 15px; color: var(--text2); line-height: 1.75; }
+  .step-list li::before { content: counter(steps); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; background: linear-gradient(135deg, var(--brand), #149194); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #fff; text-align: center; line-height: 30px; }
+
+  .link-box { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 22px 24px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed var(--border); margin-top: 48px; flex-wrap: wrap; gap: 12px; }
+  .link-box span { font-size: 14px; color: var(--text2); }
+  .link-box a { color: var(--brand); text-decoration: none; font-weight: 700; font-size: 14px; border-bottom: 1px solid var(--brand); }
+
+  .nav-posts { display: flex; justify-content: space-between; gap: 16px; margin-top: 60px; flex-wrap: wrap; }
+  .nav-post-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; text-decoration: none; color: var(--text2); font-size: 13px; flex: 1; min-width: 180px; transition: border-color 0.2s; }
+  .nav-post-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .nav-post-btn span { display: block; font-size: 11px; color: var(--text3); margin-bottom: 6px; }
+
+  footer { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); background: var(--bg2); }
+  .f-btn { background: var(--brand); color: #fff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 16px; display: inline-block; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(27,181,184,0.3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">⏰ MeetAlarm <span style="color:var(--brand)">Insight</span></a>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <a href="blog.html" style="color:var(--text2); text-decoration:none; font-size:14px;">블로그</a>
+    <a href="https://meetplaner.github.io/meetalarm/" class="app-btn">앱 시작하기 →</a>
+  </div>
+</nav>
+
+<div class="hero-post">
+  <div class="breadcrumb"><a href="blog.html">블로그</a> &nbsp;/&nbsp; 업무 자동화</div>
+  <span class="tag">업무 자동화</span>
+  <h1 class="post-title">정기 미팅 템플릿:<br>반복되는 행정 소요를 0으로 줄이기</h1>
+  <div class="post-meta">
+    <span>📅 2026년 4월</span>
+    <span>⏱ 읽는 시간 약 4분</span>
+    <span>✍️ MeetAlarm Insight</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="lead">매주 월요일 오전, 관리자는 주간 회의를 등록하고, 참석자를 지정하고, 알람을 설정하고, 슬랙으로 공지합니다. 다음 주 월요일에 똑같이 반복합니다. 이 과정이 아무리 빠르다 해도 5분이라면, 1년에 250분, 4시간이 넘는 시간을 단 하나의 반복 행정에 소비하는 셈입니다.</p>
+
+  <h2>반복 행정이 관리자에게 미치는 진짜 비용</h2>
+
+  <p>시간 낭비는 표면적인 문제일 뿐입니다. 더 심각한 것은 <strong>집중력 단절</strong>입니다. 딥워크 연구자 칼 뉴포트에 따르면, 한 번의 작업 전환이 발생하면 이전의 집중 상태로 돌아오는 데 평균 23분이 걸립니다. 매주 반복되는 행정적 작업은 관리자를 끊임없이 전략적 사고에서 운영적 처리로 끌어내립니다.</p>
+
+  <p>특히 팀 규모가 커질수록 관리해야 하는 정기 미팅의 수도 늘어납니다. 주간 팀 회의, 격주 1:1 면담, 월간 전체 회의, 분기별 리뷰... 이 모든 것들을 매번 수동으로 등록하고 관리하는 것은 관리자를 가장 생산적이어야 할 시간에 가장 비생산적인 작업에 묶어두는 것입니다.</p>
+
+  <div class="time-calc">
+    <div class="time-calc-title">📊 반복 행정 시간 계산기 (팀 5명 기준)</div>
+    <div class="time-row">
+      <span>주간 팀 회의 등록·공지</span>
+      <span>연간 260분</span>
+    </div>
+    <div class="time-row">
+      <span>격주 1:1 면담 설정 (4명)</span>
+      <span>연간 208분</span>
+    </div>
+    <div class="time-row">
+      <span>월간 전체 회의 알람 설정</span>
+      <span>연간 60분</span>
+    </div>
+    <div class="time-row">
+      <span>분기 리뷰 일정 조율·등록</span>
+      <span>연간 80분</span>
+    </div>
+    <div class="time-row">
+      <span>✅ 연간 절감 가능 시간</span>
+      <span style="color:var(--brand)">총 608분 (약 10시간)</span>
+    </div>
+  </div>
+
+  <h2>정기 미팅 템플릿이 필요한 5가지 상황</h2>
+
+  <div class="use-case-grid">
+    <div class="use-case">
+      <div class="icon">📅</div>
+      <div class="title">주간 팀 스탠드업</div>
+      <div class="desc">매주 같은 시간, 같은 멤버, 같은 형식으로 반복. 가장 대표적인 템플릿 적용 케이스입니다.</div>
+    </div>
+    <div class="use-case">
+      <div class="icon">👥</div>
+      <div class="title">1:1 정기 면담</div>
+      <div class="desc">격주 또는 월 1회 진행되는 팀원별 개인 면담. 여러 명의 1:1을 개별로 등록하는 수고를 없애줍니다.</div>
+    </div>
+    <div class="use-case">
+      <div class="icon">📊</div>
+      <div class="title">월간 성과 리뷰</div>
+      <div class="desc">월 말 정기적으로 열리는 KPI 점검 회의. 참석자와 알람 설정을 한 번만 해두면 됩니다.</div>
+    </div>
+    <div class="use-case">
+      <div class="icon">🏢</div>
+      <div class="title">전사 타운홀</div>
+      <div class="desc">분기 또는 반기마다 열리는 전체 회의. 대규모 참석자 공지를 자동으로 처리합니다.</div>
+    </div>
+    <div class="use-case">
+      <div class="icon">🔄</div>
+      <div class="title">프로젝트 주간 싱크</div>
+      <div class="desc">프로젝트 기간 동안 지속되는 정기 진행 상황 점검. 프로젝트 종료 시 일괄 비활성화도 가능합니다.</div>
+    </div>
+    <div class="use-case">
+      <div class="icon">📚</div>
+      <div class="title">교육 및 온보딩 세션</div>
+      <div class="desc">정기적으로 진행되는 사내 교육이나 신입 온보딩. 강사와 참석자를 미리 지정해둡니다.</div>
+    </div>
+  </div>
+
+  <h2>효과적인 정기 미팅 템플릿 설계 원칙</h2>
+
+  <p>템플릿은 단순히 "같은 일정을 자동으로 만들어주는 것" 이상의 의미를 가집니다. 잘 설계된 템플릿은 회의 문화 자체를 표준화합니다. 다음 원칙을 따르십시오.</p>
+
+  <ul class="step-list">
+    <li><strong>목적을 제목에 명시하십시오</strong> — "주간 회의"보다 "마케팅팀 주간 KPI 점검 (월요일 09:00)"처럼 제목만으로 회의의 성격이 파악되어야 합니다. 이것이 아카이브의 가독성을 결정합니다.</li>
+    <li><strong>알람 타이밍을 미리 설계하십시오</strong> — 회의 성격에 따라 알람 타이밍이 달라집니다. 일상적인 팀 회의는 30분 전 알람이면 충분하지만, 준비가 필요한 리뷰 회의는 전날 알람이 필요할 수 있습니다.</li>
+    <li><strong>참석자를 역할로 지정하십시오</strong> — 특정 사람이 아닌 '팀장', '프로젝트 담당자' 등 역할 기반으로 참석자를 설정하면 구성원 변경 시에도 템플릿을 수정하지 않아도 됩니다.</li>
+    <li><strong>의제 체크리스트를 포함하십시오</strong> — 매번 "오늘 뭐 얘기하죠?"를 묻는 대신, 표준 의제 항목을 템플릿에 미리 포함시키십시오. 회의 준비 시간이 크게 줄어듭니다.</li>
+    <li><strong>예외 처리 규칙을 정의하십시오</strong> — 공휴일, 휴가, 프로젝트 종료 등 예외 상황에서 자동 생성된 일정을 어떻게 처리할지 미리 팀 내 합의를 만들어두십시오.</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p>💡 <strong>관리자를 위한 핵심 조언:</strong> 정기 미팅 템플릿 설정에 처음 15분을 투자하면, 이후 1년간 동일한 설정을 반복하는 수고를 완전히 없앨 수 있습니다. 관리자의 역할은 '변수'에 집중하는 것입니다. 시스템이 상수를 처리하게 하십시오. 변하지 않는 것들을 자동화할수록 변하는 것들에 더 많은 주의를 기울일 수 있습니다.</p>
+  </div>
+
+  <h2>MeetAlarm 정기 일정 자동 생성 템플릿 활용법</h2>
+
+  <p>MeetAlarm의 정기 미팅 템플릿은 반복 주기(매일, 매주, 격주, 매월), 참석자, 알람 타이밍, 장소 정보, Zoom/Slack 링크를 한 번에 설정합니다. 설정 완료 후에는 지정된 주기에 따라 자동으로 일정 카드가 생성되며, 참석자 전원에게 알람이 발송됩니다.</p>
+
+  <p>관리자는 오직 예외적인 변경 사항이 있을 때만 개입하면 됩니다. 이 작은 차이가 쌓여 <strong>관리자의 집중력을 전략적 의사결정에 온전히 쏟을 수 있는 환경</strong>을 만들어냅니다. 수백 명 규모의 조직에서 모든 팀이 이를 도입한다면, 절감되는 시간과 집중력은 계산하기 어려울 만큼 큰 규모가 됩니다.</p>
+
+  <div class="link-box">
+    <span>🔁 추천 기능: 정기 일정 자동 생성 템플릿</span>
+    <a href="index.html#g-recurring">MeetAlarm에서 직접 설정하기 →</a>
+  </div>
+
+  <div class="nav-posts">
+    <a href="post-03.html" class="nav-post-btn">
+      <span>← 이전 글</span>
+      휘발되는 회의 기록을 기업 자산으로 만드는 법
+    </a>
+    <a href="blog.html" class="nav-post-btn" style="text-align:right;">
+      <span>블로그 목록으로 →</span>
+      전체 인사이트 보기
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="https://meetplaner.github.io/meetalarm/" class="f-btn">지금 무료로 시작하기 →</a>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:24px;">MeetAlarm은 전 세계 조직의 생산성 향상을 위해 끊임없이 연구합니다.</p>
+  <div style="font-size:12px; color:var(--text3);">
+    <a href="terms.html" style="color:var(--text3); margin-right:15px;">이용약관</a>
+    <a href="privacy.html" style="color:var(--text3);">개인정보처리방침</a>
+    <p style="margin-top:16px;">© 2026 MeetAlarm Insight Archive. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
