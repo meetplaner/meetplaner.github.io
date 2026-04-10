@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Calendar vs Notion vs Outlook: 팀 일정 관리 도구 완전 비교 - MeetAlarm Insight</title>
+<meta name="description" content="팀 규모와 업무 방식에 따라 최적의 일정 관리 도구가 달라집니다. Google Calendar, Notion, Outlook의 강점과 한계를 실용적으로 비교합니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #1BB5B8; --bg: #05080a; --bg2: #0c1419; --bg3: #101c22; --text: #e8f4f5; --text2: #7a9ea3; --text3: #3d6068; --border: rgba(27,181,184,0.2); --green: #22c55e; --amber: #f59e0b; --red: #ef4444; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; line-height: 1.8; }
+  nav { background: rgba(5,8,10,0.95); border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--text); text-decoration: none; font-size: 20px; }
+  .app-btn { background: var(--brand); color: #fff; text-decoration: none; font-weight: 800; padding: 10px 20px; border-radius: 10px; font-size: 14px; }
+  .hero-post { padding: 80px 24px 48px; text-align: center; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(27,181,184,0.04) 0%, transparent 100%); }
+  .breadcrumb { font-size: 13px; color: var(--text3); margin-bottom: 20px; }
+  .breadcrumb a { color: var(--brand); text-decoration: none; }
+  .tag { background: rgba(27,181,184,0.15); color: var(--brand); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 24px; }
+  .post-title { font-family: 'Syne', sans-serif; font-size: clamp(22px, 4vw, 40px); font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; }
+  .post-meta { font-size: 13px; color: var(--text3); display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .container { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
+  .lead { font-size: 18px; color: var(--text2); line-height: 1.9; margin-bottom: 40px; padding: 28px 32px; background: var(--bg2); border-left: 3px solid var(--brand); border-radius: 0 12px 12px 0; }
+  h2 { font-size: 22px; font-weight: 700; color: var(--text); margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 18px; font-weight: 700; color: var(--brand); margin: 28px 0 12px; }
+  p { font-size: 16px; color: var(--text2); line-height: 1.9; margin-bottom: 20px; text-align: justify; }
+  strong { color: var(--text); font-weight: 700; }
+  .highlight-box { background: rgba(27,181,184,0.06); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; margin: 28px 0; }
+  .highlight-box p { margin-bottom: 0; font-size: 15px; }
+  .tool-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+  .tool-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .tool-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .tool-name { font-size: 20px; font-weight: 800; color: var(--text); }
+  .tool-subtitle { font-size: 13px; color: var(--text2); }
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+  @media (max-width: 560px) { .pros-cons { grid-template-columns: 1fr; } }
+  .pros, .cons { border-radius: 10px; padding: 16px; }
+  .pros { background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); }
+  .cons { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); }
+  .pros-label { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+  .cons-label { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+  .pros ul, .cons ul { list-style: none; padding: 0; }
+  .pros li, .cons li { font-size: 13px; color: var(--text2); padding: 5px 0; line-height: 1.6; }
+  .pros li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+  .cons li::before { content: "✗ "; color: var(--red); font-weight: 700; }
+  .best-for { background: rgba(27,181,184,0.08); border-radius: 8px; padding: 12px 16px; font-size: 13px; color: var(--brand); margin-top: 14px; }
+  .cmp-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px; overflow-x: auto; display: block; }
+  .cmp-table th { background: var(--bg3); color: var(--text2); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  .cmp-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text2); vertical-align: middle; white-space: nowrap; }
+  .cmp-table td:first-child { font-weight: 600; color: var(--text); }
+  .ck { color: var(--green); }
+  .cx { color: var(--text3); }
+  .cp { color: var(--amber); }
+  .decision-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 24px 0; }
+  .decision-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .decision-card .icon { font-size: 28px; margin-bottom: 10px; }
+  .decision-card .title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .decision-card .answer { font-size: 13px; color: var(--brand); font-weight: 700; margin-bottom: 6px; }
+  .decision-card .desc { font-size: 12px; color: var(--text2); line-height: 1.6; }
+  .nav-posts { display: flex; justify-content: space-between; gap: 16px; margin-top: 60px; flex-wrap: wrap; }
+  .nav-post-btn { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; text-decoration: none; color: var(--text2); font-size: 13px; flex: 1; min-width: 180px; }
+  .nav-post-btn span { display: block; font-size: 11px; color: var(--text3); margin-bottom: 6px; }
+  footer { text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); background: var(--bg2); }
+  .f-btn { background: var(--brand); color: #fff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 16px; display: inline-block; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(27,181,184,0.3); }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">⏰ MeetAlarm <span style="color:var(--brand)">Insight</span></a>
+  <div style="display:flex; gap:20px; align-items:center;">
+    <a href="blog.html" style="color:var(--text2); text-decoration:none; font-size:14px;">블로그</a>
+    <a href="https://meetplaner.github.io/meetalarm/" class="app-btn">앱 시작하기 →</a>
+  </div>
+</nav>
+
+<div class="hero-post">
+  <div class="breadcrumb"><a href="blog.html">블로그</a> &nbsp;/&nbsp; 도구 비교</div>
+  <span class="tag">도구 비교</span>
+  <h1 class="post-title">Google Calendar vs Notion vs Outlook:<br>팀 일정 관리 도구 완전 비교</h1>
+  <div class="post-meta">
+    <span>📅 2026년 4월</span>
+    <span>⏱ 읽는 시간 약 6분</span>
+    <span>✍️ MeetAlarm Insight</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <p class="lead">일정 관리 도구 선택은 단순한 취향의 문제가 아닙니다. 팀의 규모, 업무 방식, 외부 연동 환경에 따라 최적의 선택이 완전히 달라집니다. 수년간 다양한 조직에서 실제로 사용해보고 얻은 인사이트를 솔직하게 정리했습니다.</p>
+
+  <h2>비교 전에 확인해야 할 핵심 질문</h2>
+
+  <p>어떤 도구도 모든 상황에 완벽하지 않습니다. 비교를 시작하기 전에 조직의 상황을 먼저 명확히 해야 합니다. 팀원 수가 5명인지 50명인지, 원격 근무 비율이 얼마인지, 외부 고객과의 일정 공유가 필요한지, 기존에 사용 중인 생산성 도구가 무엇인지에 따라 답이 달라집니다.</p>
+
+  <p>일반적으로 팀 일정 관리 도구를 선택할 때 평가해야 할 기준은 크게 다섯 가지입니다. <strong>팀 공유 편의성, 알람 및 리마인더 기능, 타 도구와의 연동성, 학습 곡선(도입 난이도), 가격 구조</strong>가 그것입니다.</p>
+
+  <h2>도구별 심층 분석</h2>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon">📅</div>
+      <div>
+        <div class="tool-name">Google Calendar</div>
+        <div class="tool-subtitle">무료 / 구글 워크스페이스 포함</div>
+      </div>
+    </div>
+    <p>구글 캘린더는 팀 일정 관리 도구 시장에서 가장 광범위하게 사용되는 솔루션입니다. Gmail, Meet, Drive와의 자연스러운 통합이 가장 큰 강점이며, 초대받은 사람이 별도 계정 없이도 일정을 확인할 수 있는 구조는 외부 파트너와 협업이 많은 환경에서 탁월합니다.</p>
+    <p>그러나 팀원이 각자 개별 캘린더를 관리하는 구조라, 통합된 팀 뷰를 만들기 위해서는 공유 캘린더 설정에 상당한 관리 노력이 필요합니다. 알람 커스터마이징이 단순하고, 미팅 참석자에게만 차별화된 알람을 보내는 기능이 없다는 점도 한계입니다.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pros-label">강점</div>
+        <ul>
+          <li>구글 생태계와 완벽한 통합</li>
+          <li>외부 참가자와의 일정 공유 편리</li>
+          <li>무료 (개인/소규모 팀)</li>
+          <li>모바일 앱 완성도 높음</li>
+          <li>학습 곡선이 거의 없음</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="cons-label">한계</div>
+        <ul>
+          <li>팀 통합 뷰 설정이 번거로움</li>
+          <li>알람이 단순하고 개인화 어려움</li>
+          <li>회의록 기능 없음</li>
+          <li>부서별 권한 관리 기능 미흡</li>
+          <li>큰 조직에서 캘린더 파편화 발생</li>
+        </ul>
+      </div>
+    </div>
+    <div class="best-for">✅ <strong>추천 대상:</strong> 구글 워크스페이스를 이미 사용 중인 10명 이하의 소규모 팀. 외부 파트너와의 일정 공유가 잦은 환경.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon">🗒️</div>
+      <div>
+        <div class="tool-name">Notion Calendar (Notion)</div>
+        <div class="tool-subtitle">무료 / 플랜별 상이</div>
+      </div>
+    </div>
+    <p>Notion은 캘린더보다는 올인원 워크스페이스 도구로 출발했지만, Notion Calendar의 출시로 일정 관리 영역으로도 확장됐습니다. Notion의 가장 큰 강점은 일정을 단순한 시간 블록이 아닌 데이터베이스로 관리한다는 점입니다. 회의 의제, 담당자, 첨부 문서를 하나의 페이지에 통합하여 회의 전·중·후 관리를 한 곳에서 처리할 수 있습니다.</p>
+    <p>그러나 이 유연성은 동시에 복잡성을 의미합니다. 구조를 직접 설계해야 하며, 팀 전체가 동일한 방식으로 사용하지 않으면 금방 카오스가 됩니다. 알람 기능도 네이티브 캘린더 앱에 비해 상당히 제한적이며, 모바일 경험이 데스크탑보다 떨어집니다.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pros-label">강점</div>
+        <ul>
+          <li>일정을 데이터베이스로 관리 가능</li>
+          <li>회의 준비·기록·후속조치 통합</li>
+          <li>커스터마이징 자유도 극대화</li>
+          <li>문서, 프로젝트, 위키와 통합</li>
+          <li>팀 지식 축적에 강점</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="cons-label">한계</div>
+        <ul>
+          <li>초기 설계에 상당한 시간 소요</li>
+          <li>알람·리마인더 기능 약함</li>
+          <li>팀 전체 도입 시 학습 곡선 있음</li>
+          <li>모바일 UX가 데스크탑 대비 열등</li>
+          <li>외부 참가자 일정 공유 불편</li>
+        </ul>
+      </div>
+    </div>
+    <div class="best-for">✅ <strong>추천 대상:</strong> 이미 Notion을 주력 도구로 사용하는 팀. 회의 준비와 기록을 체계화하고 싶은 스타트업.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon">📧</div>
+      <div>
+        <div class="tool-name">Microsoft Outlook Calendar</div>
+        <div class="tool-subtitle">Microsoft 365 구독 포함</div>
+      </div>
+    </div>
+    <p>Outlook 캘린더는 오랜 역사만큼 기업 환경에서 검증된 신뢰성을 가집니다. Teams와의 통합은 화상 미팅 예약을 캘린더에서 바로 처리할 수 있게 하며, 대규모 조직의 복잡한 회의실 예약 시스템과의 통합이 탁월합니다. 특히 이메일-캘린더 연동 측면에서는 경쟁 도구보다 한 수 위입니다.</p>
+    <p>반면 UI/UX의 복잡성은 Outlook의 고질적인 약점입니다. 외부 인원과의 일정 공유가 구글 캘린더에 비해 훨씬 번거롭고, 비 Microsoft 도구와의 연동성도 제한적입니다. 무거운 설치 기반과 높은 라이선스 비용도 스타트업이나 소규모 팀에는 부담입니다.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="pros-label">강점</div>
+        <ul>
+          <li>Teams·Exchange와 완벽한 통합</li>
+          <li>회의실 예약 시스템 연동 강점</li>
+          <li>대규모 기업 IT 환경 최적화</li>
+          <li>이메일·캘린더 통합 완성도 최고</li>
+          <li>보안 및 컴플라이언스 기능 강력</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="cons-label">한계</div>
+        <ul>
+          <li>UI가 복잡하고 학습 곡선 있음</li>
+          <li>외부 파트너 공유 과정 번거로움</li>
+          <li>비 Microsoft 도구 연동 제한적</li>
+          <li>라이선스 비용 높음</li>
+          <li>모바일 앱 경험이 경쟁 대비 떨어짐</li>
+        </ul>
+      </div>
+    </div>
+    <div class="best-for">✅ <strong>추천 대상:</strong> 이미 Microsoft 365를 사용 중인 중견·대기업. 보안 컴플라이언스 요구가 엄격한 금융·제조·공공 분야.</div>
+  </div>
+
+  <h2>기능별 한눈에 비교</h2>
+
+  <table class="cmp-table">
+    <tr>
+      <th>기능</th>
+      <th>Google Calendar</th>
+      <th>Notion</th>
+      <th>Outlook</th>
+    </tr>
+    <tr><td>팀 공유 편의성</td><td class="ck">✓ 매우 쉬움</td><td class="cp">△ 설정 필요</td><td class="cp">△ 사내만 쉬움</td></tr>
+    <tr><td>알람·리마인더</td><td class="cp">△ 기본 수준</td><td class="cx">✗ 제한적</td><td class="ck">✓ 다양한 옵션</td></tr>
+    <tr><td>회의록 기능</td><td class="cx">✗ 없음</td><td class="ck">✓ 강력</td><td class="cp">△ 기본 메모</td></tr>
+    <tr><td>외부 연동</td><td class="ck">✓ API 풍부</td><td class="ck">✓ API 있음</td><td class="cp">△ MS 위주</td></tr>
+    <tr><td>모바일 경험</td><td class="ck">✓ 우수</td><td class="cp">△ 보통</td><td class="cp">△ 보통</td></tr>
+    <tr><td>무료 사용</td><td class="ck">✓ 가능</td><td class="ck">✓ 제한적</td><td class="cx">✗ 불가</td></tr>
+    <tr><td>대규모 조직 적합성</td><td class="cp">△ 보통</td><td class="cp">△ 보통</td><td class="ck">✓ 탁월</td></tr>
+  </table>
+
+  <h2>상황별 최적 선택 가이드</h2>
+
+  <div class="decision-grid">
+    <div class="decision-card">
+      <div class="icon">🚀</div>
+      <div class="title">5명 이하 스타트업</div>
+      <div class="answer">→ Google Calendar</div>
+      <div class="desc">무료이고 학습 곡선이 없습니다. 빠르게 움직이는 소규모 팀에 오버엔지니어링은 독입니다.</div>
+    </div>
+    <div class="decision-card">
+      <div class="icon">📚</div>
+      <div class="title">지식 관리 중시 팀</div>
+      <div class="answer">→ Notion</div>
+      <div class="desc">회의록, 결정 히스토리, 프로젝트 문서를 한 곳에 모으고 싶다면 Notion이 독보적입니다.</div>
+    </div>
+    <div class="decision-card">
+      <div class="icon">🏢</div>
+      <div class="title">100명 이상 중견기업</div>
+      <div class="answer">→ Outlook</div>
+      <div class="desc">회의실 예약, 보안 정책, IT 관리 측면에서 Outlook이 압도적입니다. Microsoft 365가 이미 있다면 더욱 그렇습니다.</div>
+    </div>
+    <div class="decision-card">
+      <div class="icon">🌐</div>
+      <div class="title">원격/하이브리드 팀</div>
+      <div class="answer">→ Google Calendar + Notion 조합</div>
+      <div class="desc">일정 공유는 구글 캘린더, 회의록 및 맥락 공유는 Notion으로 분리 운영하는 조합이 현실적으로 가장 효과적입니다.</div>
+    </div>
+  </div>
+
+  <h2>도구 선택 후 가장 중요한 것</h2>
+
+  <p>최고의 도구를 선택하더라도, 팀 전체가 일관되게 사용하지 않으면 의미가 없습니다. 도구 선택보다 중요한 것은 <strong>우리 팀이 어떻게 이 도구를 사용할 것인가에 대한 합의</strong>입니다.</p>
+
+  <p>어떤 일정은 반드시 등록한다, 알람은 어떻게 설정한다, 회의록은 어디에 저장한다는 팀 내 규칙이 없으면 가장 좋은 도구도 6개월 뒤에는 파편화됩니다. 도입 첫 달에 팀 전체가 참여하는 도구 사용 가이드라인 세션을 반드시 진행하세요.</p>
+
+  <div class="highlight-box">
+    <p>💡 <strong>현실적인 조언:</strong> 도구를 완전히 교체하는 것보다, 기존에 사용 중인 도구를 제대로 활용하는 데 집중하는 것이 대부분의 경우 더 현명합니다. 새 도구 도입에는 항상 전환 비용(학습, 데이터 마이그레이션, 저항감)이 따릅니다. 현재 도구로 해결되지 않는 명확한 페인 포인트가 있을 때만 교체를 고려하세요.</p>
+  </div>
+
+  <div class="nav-posts">
+    <a href="post-13.html" class="nav-post-btn">
+      <span>← 이전 글</span>
+      효과적인 1:1 미팅을 위한 7가지 원칙
+    </a>
+    <a href="post-15.html" class="nav-post-btn" style="text-align:right;">
+      <span>다음 글 →</span>
+      회의 없이도 팀이 정렬되는 비동기 소통법
+    </a>
+  </div>
+</div>
+
+<footer>
+  <a href="https://meetplaner.github.io/meetalarm/" class="f-btn">지금 무료로 시작하기 →</a>
+  <p style="color:var(--text2); font-size:14px; margin-bottom:24px;">MeetAlarm은 전 세계 조직의 생산성 향상을 위해 끊임없이 연구합니다.</p>
+  <div style="font-size:12px; color:var(--text3);">
+    <a href="terms.html" style="color:var(--text3); margin-right:15px;">이용약관</a>
+    <a href="privacy.html" style="color:var(--text3);">개인정보처리방침</a>
+    <p style="margin-top:16px;">© 2026 MeetAlarm Insight Archive. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
